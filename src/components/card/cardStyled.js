@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const CardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -13,6 +12,27 @@ export const CardBody = styled.div`
     border-radius: 10px;
     padding-bottom: 1px;
     margin: 0.5rem;
+    position: relative;
+    &:hover{
+      opacity: 0.7;
+    }
+`;
+
+export const CardOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity:0;
+  transition: .5s ease;
+  background-image:linear-gradient(-180deg, #0ad4fa 0%, #25bbf1 100%);
+  border-radius: 10px;
+  &:hover{
+      opacity: 0.8;
+  }
 `;
 
 export const CardImageDiv = styled.div`
@@ -20,8 +40,9 @@ export const CardImageDiv = styled.div`
 `;
 
 export const CardImage = styled.img`
+  display: block;
   width: 100%;
-  display: block; 
+  height: auto;
 `;
 
 export const CardLine = styled.hr`
@@ -38,11 +59,10 @@ export const CardDivIcon = styled.div`
 
 export const CardIcon = styled.img`
   margin:1rem;
-  cursor: pointer;
 `;
 
 export const CardNeed = styled.div`
-  opacity:0.8;
+  opacity:0.6;
   background:#616161;
   border-radius: 100px;
   height:42px;
@@ -72,5 +92,32 @@ export const CardProduct = styled.h4`
   margin-left: 18px;
 `;
 
+export const ButtonBuy = styled.button`
+   font-family:'Source Sans Pro', sans-serif;
+   width:80%;
+   height:auto;
+   margin: 0rem 2rem 0rem;
+   border: none;
+   border-radius: 2rem;
+   outline: none;
+   padding:1rem;
+   cursor: pointer;  
+   background:#fbfbfb;  
+   font-size:18px;
+   color:#616161;
+   text-align:center;
+`
+
+export const CardBuy = styled.div`
+  width:100%;
+  margin-top:4rem;
+`
+
+export const CardTextBuy = styled.h3`
+  color:#000000;
+  text-align:center;
+  padding-top:1rem;
+  font-size:36px;
+`
 
 
