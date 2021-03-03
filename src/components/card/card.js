@@ -21,7 +21,7 @@ import coin from '../../assets/coin.svg'
 
 const dataFilters = [1,2,3,4,5,6];
 let dineroIncompleto = false;
-let hovered = true;
+let hovered = false;
 
 export function Card () {
     return(

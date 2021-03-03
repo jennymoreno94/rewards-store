@@ -4,7 +4,7 @@ export const CardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 1vw;
-  margin-top: 50px;
+  margin-top: 2rem;
 `;
 
 export const CardBody = styled.div`
