@@ -5,6 +5,7 @@ import {
 } from "../modal/modalStyled";
 
 export function Modal(props) {
+    
     const closeModal = () => {
         props.setIsOpenModal(false);
     }

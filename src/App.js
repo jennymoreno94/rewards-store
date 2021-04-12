@@ -7,7 +7,7 @@ function App() {
     <div>
         <Header/>
         <Filter/>
-        <History/>  
+        <Card/>  
     </div>
   );
 }

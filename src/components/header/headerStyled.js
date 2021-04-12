@@ -36,24 +36,26 @@ export const ImageLogo = styled.img`
     }
 `;
 
-export const HeaderUserCoin = styled.div`
-    width:60%;
+export const HeaderDiv = styled.div`
+    width:80%;
     display: flex;
     flex-direction: row; 
     padding: 1rem 0.5rem 1rem 2rem;
     ${media.desktop} {
         padding: 1rem 2rem 1rem 0rem;
-        width:20%;
+        width:40%;
     }
 `
 
 export const ButtonCoin = styled.button`
    height: 30px;
+   background-color:#f8f8f8;
    border: none;
    display:flex;
    justify-content: space-between;
    padding:0.2rem;
    border-radius: 1rem;
+   margin-left: 0.2rem;
    outline: none;
    cursor: pointer;
     ${media.desktop} {
@@ -104,9 +106,22 @@ export const UserName = styled.h6`
     color:black;
     align-self: center;
     margin:0px;
-    padding: 0.5rem 0.5rem 0.5rem 0rem;
+    margin-left:0.5rem;
+    padding: 0.5rem 0rem 0.5rem 0rem;
     ${media.desktop} {
         font-size:16px;
     }
+`
+
+export const TextButton = styled.p`
+   font-family:'Source Sans Pro', sans-serif;
+   font-size:15px;
+   margin: 0 auto;
+   padding-left:0.5rem;
+   line-height: 1.314rem; 
+   ${media.desktop} {
+        font-size: 20px;
+        line-height: 2rem;
+    } 
 `
 

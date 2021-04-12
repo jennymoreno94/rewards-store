@@ -20,8 +20,8 @@ import iconwhite from '../../assets/buy-white.svg'
 import coin from '../../assets/coin.svg'  
 
 const dataFilters = [1,2,3,4,5,6];
-let dineroIncompleto = false;
-let hovered = false;
+let dineroIncompleto = true;
+let hovered = true;
 
 export function Card () {
     return(
