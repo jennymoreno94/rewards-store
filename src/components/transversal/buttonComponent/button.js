@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     MyButton,
     TextButton
@@ -10,7 +10,7 @@ export function Button(props) {
         <MyButton onClick={props.onClick}
             theme={props.propsButton}
         >
-            <TextButton>{props.tittle}</TextButton>
+            <TextButton theme={props.propsButton} >{props.tittle}</TextButton>
             {props.children}
         </MyButton>
         

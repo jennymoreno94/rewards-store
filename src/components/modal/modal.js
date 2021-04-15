@@ -7,8 +7,7 @@ import {
     ModalContent
 } from "../modal/modalStyled";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
-import { Button } from '../transversal/buttonComponent/button'
+import {faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
 export function Modal(props) {
 

@@ -59,7 +59,8 @@ export const FilterButton = styled.button`
    background:#ededed;  
    font-size:18px;
    color:#616161;
-   text-align:center;
+   
+   
    padding: 1rem 0;
    ${media.desktop} {
       width:15%;
@@ -72,4 +73,14 @@ export const FilterLine = styled.hr`
   height: 1px;
   background-color: #dcdcdc;
   border: none; 
+`;
+
+export const ImagePaginacion = styled.img`
+  width: 25px;
+  height: 25px; 
+   ${media.desktop} {
+        padding: 0.1rem;
+        width: 40px;
+        height: 40px;
+    }
 `;

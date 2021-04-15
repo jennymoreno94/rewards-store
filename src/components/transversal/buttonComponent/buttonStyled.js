@@ -1,13 +1,10 @@
-import styled from 'styled-components'; 
-
-const media = {
-  desktop: '@media(min-width: 768px)'
-}
+import styled from 'styled-components';
 
 
 export const MyButton = styled.button`
    //height: 30px;
    height : ${props => props.theme.height};
+   width : ${props => props.theme.width};
    background-color: ${props => props.theme.backgroundColor};
    border: none;
    display:flex;
@@ -16,7 +13,7 @@ export const MyButton = styled.button`
    padding:${props => props.theme.padding};
    border-radius: ${props => props.theme.borderRadius};
    //border-radius: 1rem;
-   margin-left: ${props => props.theme.margin};
+   margin: ${props => props.theme.margin};
    //margin-left: 0.2rem;
    outline: none;
    cursor: ${props => props.theme.cursor};
@@ -24,14 +21,12 @@ export const MyButton = styled.button`
 `;
 
 export const TextButton = styled.p`
-   font-family:'Source Sans Pro', sans-serif;
-   font-size:20px;
-   margin: 0 auto;
-   padding-left:0.5rem;
-   line-height: 1.314rem; 
-   ${media.desktop} {
-        font-size: 25px;
-        line-height: 2rem;
-    } 
+   font-family:${props => props.theme.fontFamily};
+   font-size:${props => props.theme.fontSize};
+   margin: ${props => props.theme.marginText};
+   padding:${props => props.theme.paddingText};
+   line-height: ${props => props.theme.lineHeight};
+   color:${props => props.theme.color};
+  
 `
 

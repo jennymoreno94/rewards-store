@@ -25,14 +25,20 @@ export function Header() {
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
     });
-
+    const [coins, setCoins] = useState(1000);
+    
     const propsButton = {
         height: queryMatch.matches ? "40px" : "30px",
-        backgroundColor: queryMatch.matches ? "#f8f8f8" : "#ffffff",
+        backgroundColor: queryMatch.matches ? "#e9e7e7" : "#ffffff",
         padding: "0.2rem",
         borderRadius: "1rem",
-        margin: "0.2rem",
-        cursor: "pointer"
+        margin: "0 0 0 0.2rem",
+        cursor: "pointer",
+        fontFamily: "'Source Sans Pro', sans-serif",
+        fontSize : queryMatch.matches ? "25px" :"20px",
+        marginText : "0 auto",
+        paddingText: "0 0 0 0.5rem",
+        lineHeight: queryMatch.matches ? "2rem" : "1.314rem"
     }
 
     const propsModal = {
@@ -53,8 +59,11 @@ export function Header() {
     };
 
     const handleHistory = () => {
-        <History/>
+        <History />
+    };
 
+    const handleAddCoins = (coins) => {
+        setCoins(coins)
     };
 
     return (
@@ -67,23 +76,17 @@ export function Header() {
                     tittle={`Add Coins ${isOpenModal}`}
                     propsModal={propsModal}
                 >
-                    <Button propsButton={{ ...propsButton, backgroundColor: "#e9e8e8", cursor: "auto" }} tittle={"1000"}>
+                    <Button onClick={() => {handleAddCoins(coins + 1000)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8" }} tittle={"1000"}>
                         <ImageCoin src={coin} alt="Coin" />
                     </Button>
-                    <Button propsButton={{ ...propsButton, backgroundColor: "#e9e8e8", cursor: "auto" }} tittle={"5000"}>
+                    <Button onClick={() => {handleAddCoins(coins + 5000)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8" }} tittle={"5000"}>
                         <ImageCoin src={coin} alt="Coin" />
                     </Button>
-                    <Button propsButton={{ ...propsButton, backgroundColor: "#e9e8e8", cursor: "auto" }} tittle={"7500"}>
+                    <Button onClick={() => {handleAddCoins(coins + 7500)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8"}} tittle={"7500"}>
                         <ImageCoin src={coin} alt="Coin" />
                     </Button>
 
                 </Modal>
-
-              
-                   
-
-                
-
                 <HeaderDiv>
                     <Button propsButton={propsButton}
                         onClick={handleChange} tittle={queryMatch.matches ? "AddCoins" : null}>
@@ -94,7 +97,7 @@ export function Header() {
                         <FontAwesomeIcon icon={faHistory} style={{ color: "#FF8000", fontSize: "25px", padding: "0.2rem" }} />
                     </Button>
                     <UserName> Jenny Moreno Vallejo </UserName>
-                    <Button propsButton={{ ...propsButton, backgroundColor: "#f8f8f8", cursor: "auto" }} tittle={"1000"}>
+                    <Button propsButton={{ ...propsButton, backgroundColor: "#e9e7e7", cursor: "auto" }} tittle={coins}>
                         <ImageCoin src={coin} alt="Coin" />
                     </Button>
                 </HeaderDiv>
