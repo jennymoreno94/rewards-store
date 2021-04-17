@@ -1,28 +1,30 @@
 {
   "files": {
     "main.css": "/rewards-store/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/rewards-store/static/js/main.c477f883.chunk.js",
-    "main.js.map": "/rewards-store/static/js/main.c477f883.chunk.js.map",
-    "runtime-main.js": "/rewards-store/static/js/runtime-main.6f43d7a7.js",
-    "runtime-main.js.map": "/rewards-store/static/js/runtime-main.6f43d7a7.js.map",
-    "static/js/2.43203ac8.chunk.js": "/rewards-store/static/js/2.43203ac8.chunk.js",
-    "static/js/2.43203ac8.chunk.js.map": "/rewards-store/static/js/2.43203ac8.chunk.js.map",
-    "static/js/3.aee8f13e.chunk.js": "/rewards-store/static/js/3.aee8f13e.chunk.js",
-    "static/js/3.aee8f13e.chunk.js.map": "/rewards-store/static/js/3.aee8f13e.chunk.js.map",
+    "main.js": "/rewards-store/static/js/main.2df01f4c.chunk.js",
+    "main.js.map": "/rewards-store/static/js/main.2df01f4c.chunk.js.map",
+    "runtime-main.js": "/rewards-store/static/js/runtime-main.54c6a009.js",
+    "runtime-main.js.map": "/rewards-store/static/js/runtime-main.54c6a009.js.map",
+    "static/js/2.72376d26.chunk.js": "/rewards-store/static/js/2.72376d26.chunk.js",
+    "static/js/2.72376d26.chunk.js.map": "/rewards-store/static/js/2.72376d26.chunk.js.map",
+    "static/js/3.7f13690f.chunk.js": "/rewards-store/static/js/3.7f13690f.chunk.js",
+    "static/js/3.7f13690f.chunk.js.map": "/rewards-store/static/js/3.7f13690f.chunk.js.map",
     "index.html": "/rewards-store/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/rewards-store/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.43203ac8.chunk.js.LICENSE.txt": "/rewards-store/static/js/2.43203ac8.chunk.js.LICENSE.txt",
+    "static/js/2.72376d26.chunk.js.LICENSE.txt": "/rewards-store/static/js/2.72376d26.chunk.js.LICENSE.txt",
     "static/media/AcerAspire-x1.8786ab91.png": "/rewards-store/static/media/AcerAspire-x1.8786ab91.png",
     "static/media/aerolab-logo.0a8fb170.svg": "/rewards-store/static/media/aerolab-logo.0a8fb170.svg",
+    "static/media/arrow-left.48260431.svg": "/rewards-store/static/media/arrow-left.48260431.svg",
+    "static/media/arrow-right.ec702bfd.svg": "/rewards-store/static/media/arrow-right.ec702bfd.svg",
     "static/media/buy-blue.c5c4f01c.svg": "/rewards-store/static/media/buy-blue.c5c4f01c.svg",
     "static/media/buy-white.9b6e6567.svg": "/rewards-store/static/media/buy-white.9b6e6567.svg",
     "static/media/coin.b8bc711d.svg": "/rewards-store/static/media/coin.b8bc711d.svg",
     "static/media/header-x1.b6f067c6.png": "/rewards-store/static/media/header-x1.b6f067c6.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.6f43d7a7.js",
-    "static/js/2.43203ac8.chunk.js",
+    "static/js/runtime-main.54c6a009.js",
+    "static/js/2.72376d26.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.c477f883.chunk.js"
+    "static/js/main.2df01f4c.chunk.js"
   ]
 }
