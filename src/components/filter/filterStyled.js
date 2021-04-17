@@ -76,11 +76,19 @@ export const FilterLine = styled.hr`
 `;
 
 export const ImagePaginacion = styled.img`
-  width: 25px;
-  height: 25px; 
+  width: 40px;
+  height: 40px; 
    ${media.desktop} {
         padding: 0.1rem;
-        width: 40px;
-        height: 40px;
+    }
+`;
+
+export const ContentPagination = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 0.1rem;
+    flex-direction:row;
+    ${media.desktop} {
+      margin-left: 10rem;
     }
 `;

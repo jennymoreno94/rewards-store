@@ -7,7 +7,8 @@ import {
     FilterVerticalLine,
     FilterGray,
     FilterButton,
-    ImagePaginacion
+    ImagePaginacion,
+    ContentPagination
 } from '../filter/filterStyled'
 import { Button } from '../transversal/buttonComponent/button'
 import arrowLeft from '../../assets/arrow-left.svg'
@@ -52,7 +53,7 @@ export function Filter() {
         height: queryMatch.matches ? "40px" : "25px",
         width: queryMatch.matches ? "40px" : "25px",
         backgroundColor: "#ffffff",
-        padding:"0",
+        padding: "0",
         borderRadius: "100%",
         margin: "1rem"
 
@@ -70,13 +71,14 @@ export function Filter() {
                 <Button onClick={handleFilters} propsButton={propsButton} tittle={"Most recent"} />
                 <Button onClick={handleFilters} propsButton={propsButton} tittle={"Lowest price"} />
                 <Button onClick={handleFilters} propsButton={propsButton} tittle={"Highest price"} />
-
-                <Button onClick={handlePagination} propsButton={propsButtonPagination}>
-                    <ImagePaginacion src={arrowLeft} alt="arrowLeft" />
-                </Button>
-                <Button onClick={handlePagination} propsButton={propsButtonPagination}>
-                    <ImagePaginacion src={arrowRight} alt="arrowRight" />
-                </Button>
+                <ContentPagination>
+                    <Button onClick={handlePagination} propsButton={propsButtonPagination}>
+                        <ImagePaginacion src={arrowLeft} alt="arrowLeft" />
+                    </Button>
+                    <Button onClick={handlePagination} propsButton={propsButtonPagination}>
+                        <ImagePaginacion src={arrowRight} alt="arrowRight" />
+                    </Button>
+                </ContentPagination>
             </FilterBody>
             <FilterLine />
         </FilterWrapper >
