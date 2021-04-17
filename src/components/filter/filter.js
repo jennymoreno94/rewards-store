@@ -45,7 +45,7 @@ export function Filter() {
         fontFamily: "'Source Sans Pro', sans-serif",
         fontSize: "18px",
         color: "#616161",
-        marginText: queryMatch.matches ? "1.2rem 0 1.2rem 1rem" : "1.5rem 0 1.5rem 3.5rem"
+        marginText: queryMatch.matches ? "1.2rem 0 1.2rem 1rem" : "1.5rem 0 1.5rem 4rem"
         //paddingText: queryMatch.matches ?  null : "1.5rem 0 1.5rem 0.5rem",
     }
 
