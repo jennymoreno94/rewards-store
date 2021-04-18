@@ -47,7 +47,6 @@ export function Card() {
     matches: window.innerWidth > 768 ? true : false,
   });
 
-  console.log(Products);
   useEffect(() => {
     window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
       let matches = e.matches;
@@ -57,13 +56,12 @@ export function Card() {
 
   const handleChange = (open) => {
     setIsOpenModal(open);
-    setIsReedem(false)
+    setIsReedem(false);
   };
 
-  const handleReedme = (key) => {
+  const handleReedme = () => {
     setIsReedem(true)
     setIsOpenModal(false);
-    setKey(key);
   };
 
   const handleConfirmationMessage = () => {
@@ -133,7 +131,7 @@ export function Card() {
                       <CardConfirmation>
                         <CardTextConfirmation>Are you sure?</CardTextConfirmation>
                         <CardButtonConfirmation>
-                          <Button onClick={() => {handleReedme(item._id)}} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"Yes"} />
+                          <Button onClick={() => {handleReedme}} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"Yes"} />
                           <Button onClick={() => { handleChange(false) }} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"No"} />
                         </CardButtonConfirmation>
                       </CardConfirmation> 

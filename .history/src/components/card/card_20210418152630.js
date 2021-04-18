@@ -55,15 +55,15 @@ export function Card() {
     })
   });
 
-  const handleChange = (open) => {
+  const handleChange = (open,key) => {
     setIsOpenModal(open);
-    setIsReedem(false)
+    setIsReedem(false);
+    setKey(key);
   };
 
-  const handleReedme = (key) => {
+  const handleReedme = () => {
     setIsReedem(true)
     setIsOpenModal(false);
-    setKey(key);
   };
 
   const handleConfirmationMessage = () => {

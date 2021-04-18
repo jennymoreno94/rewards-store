@@ -1,5 +1,4 @@
-import React, { useState, useEffect,useContext } from 'react';
-import {AppContext} from '../../context/appConext';
+import React, { useState, useEffect } from 'react';
 import {
   CardWrapper,
   CardBody,
@@ -32,22 +31,17 @@ import smile from '../../assets/smiley.svg'
 import sad from '../../assets/sad.svg'
 
 const dataFilters = [1, 2, 3, 4, 5, 6];
-let dineroCompleto = true;
+let dineroIncompleto = false;
 let hovered = true;
 let error = true;
 
 export function Card() {
-  const { Products } = useContext(AppContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
-  const [key, setKey] = useState("");
-
-
   const [queryMatch, setQueryMatch] = useState({
     matches: window.innerWidth > 768 ? true : false,
   });
 
-  console.log(Products);
   useEffect(() => {
     window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
       let matches = e.matches;
@@ -60,10 +54,9 @@ export function Card() {
     setIsReedem(false)
   };
 
-  const handleReedme = (key) => {
+  const handleReedme = () => {
     setIsReedem(true)
     setIsOpenModal(false);
-    setKey(key);
   };
 
   const handleConfirmationMessage = () => {
@@ -94,64 +87,64 @@ export function Card() {
     <>
 
       <CardWrapper>
-        {Products.map((item, index) => {
-          console.log(item._id)
+        {dataFilters.map((item, index) => {
           return (
-            <section key={item._id}>
-              {console.log(key === item._id)}
-              <CardBody background={key === item._id && isReedem ? error ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
-                { key === item._id &&  isReedem ?
-                   <div>
+            <section key={index}>
+              <CardBody background={isReedem ? error ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
+                {isReedem ?
+                  <div>
                     <CardImageDiv>
                       <CardImage widthImage={"60%"} heightImage={"auto"} src={error ? sad : smile} />
                     </CardImageDiv>
                     <CardTittleH3 textAlign="center" color="#f0faff">{error ? "Error!" : "Success!"}</CardTittleH3>
                     <CardTittleH4 textAlign="center" color="#f0faff">You've redeem the product successfully</CardTittleH4>
                     <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: error ? "#bf0000" : "#009a00", }} tittle={error ? "TRY AGAIN" : "CONTINUE"}></Button>
-                  </div> 
+                  </div>
                   :
                   <div>
                     <CardDivIcon>
-                      {dineroCompleto ?
-                        hovered ? <div style={{ margin: "2.3rem" }} /> : <CardIcon src={iconblue} /> :
+                      {dineroIncompleto ?
                         <CardNeed>You need 1000 <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
-                      }
+                        :
+                        hovered ? <div style={{ margin: "2.3rem" }} /> : <CardIcon src={iconblue} />}
                     </CardDivIcon>
                     <CardImageDiv>
-                      <CardImage src={item.img.url} />
+                      <CardImage src={acer} />
                     </CardImageDiv>
                     <CardLine />
-                    <CardTittleH3>{item.category}</CardTittleH3>
-                    <CardTittleH4>{item.name}</CardTittleH4>
+                    <CardTittleH3>Latops</CardTittleH3>
+                    <CardTittleH4>Acer Aspire E1-522</CardTittleH4>
                     <Modal
                       isOpenModal={isOpenModal}
                       setIsOpenModal={setIsOpenModal}
                       tittle={"Reedem"}
                       propsModal={propsModal}
                     >
-                      
+
                       <CardConfirmation>
                         <CardTextConfirmation>Are you sure?</CardTextConfirmation>
                         <CardButtonConfirmation>
-                          <Button onClick={() => {handleReedme(item._id)}} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"Yes"} />
+                          <Button onClick={handleReedme} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"Yes"} />
                           <Button onClick={() => { handleChange(false) }} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"No"} />
+
                         </CardButtonConfirmation>
-                      </CardConfirmation> 
+                      </CardConfirmation>
+
                     </Modal>
 
                     {hovered ?
                       <CardOverlay>
 
                         <CardDivIcon>
-                          {dineroCompleto ?
-                            <CardIcon src={iconwhite} /> :
+                          {dineroIncompleto ?
                             <CardNeed style={{ opacity: "1", background: "#fbfbfb", color: "#616161" }}>You need 1000 <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
-                          }
+                            :
+                            <CardIcon src={iconwhite} />}
                           {/*{ hovered && !dineroIncompleto ? <CardIcon src={iconwhite}/> :  <CardNeed style={{opacity: "1",background:"#fbfbfb",color:"#616161"}}>You need 1000 <CardImageCoin src={coin} alt="Coin" /> </CardNeed>   }*/}
                         </CardDivIcon>
                         <CardBuy>
                           <CardTextBuy>12.000 <CardImageCoin style={{ width: "36px", height: "36px" }} src={coin} alt="Coin" /></CardTextBuy>
-                          {hovered && dineroCompleto ? <Button onClick={() => { handleChange(true) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
+                          {hovered && !dineroIncompleto ? <Button onClick={() => { handleChange(true) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
                           {/*<ButtonBuy onClick={() => { alert("hola") }}>Reedem now</ButtonBuy>*/}
                         </CardBuy>
                       </CardOverlay> : null}

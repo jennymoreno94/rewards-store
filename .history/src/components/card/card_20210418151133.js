@@ -98,17 +98,16 @@ export function Card() {
           console.log(item._id)
           return (
             <section key={item._id}>
-              {console.log(key === item._id)}
-              <CardBody background={key === item._id && isReedem ? error ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
-                { key === item._id &&  isReedem ?
-                   <div>
+              <CardBody background={key = item._id ? isReedem ? error ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null : null}>
+                {isReedem ?
+                  { key = item._id ? <div>
                     <CardImageDiv>
                       <CardImage widthImage={"60%"} heightImage={"auto"} src={error ? sad : smile} />
                     </CardImageDiv>
                     <CardTittleH3 textAlign="center" color="#f0faff">{error ? "Error!" : "Success!"}</CardTittleH3>
                     <CardTittleH4 textAlign="center" color="#f0faff">You've redeem the product successfully</CardTittleH4>
                     <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: error ? "#bf0000" : "#009a00", }} tittle={error ? "TRY AGAIN" : "CONTINUE"}></Button>
-                  </div> 
+                  </div> : null}
                   :
                   <div>
                     <CardDivIcon>

@@ -55,15 +55,15 @@ export function Card() {
     })
   });
 
-  const handleChange = (open) => {
+  const handleChange = (open,key) => {
     setIsOpenModal(open);
-    setIsReedem(false)
+    setIsReedem(false);
+    setKey(key);
   };
 
-  const handleReedme = (key) => {
+  const handleReedme = () => {
     setIsReedem(true)
     setIsOpenModal(false);
-    setKey(key);
   };
 
   const handleConfirmationMessage = () => {
@@ -133,7 +133,7 @@ export function Card() {
                       <CardConfirmation>
                         <CardTextConfirmation>Are you sure?</CardTextConfirmation>
                         <CardButtonConfirmation>
-                          <Button onClick={() => {handleReedme(item._id)}} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"Yes"} />
+                          <Button onClick={() => {handleReedme}} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"Yes"} />
                           <Button onClick={() => { handleChange(false) }} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"No"} />
                         </CardButtonConfirmation>
                       </CardConfirmation> 
@@ -151,7 +151,7 @@ export function Card() {
                         </CardDivIcon>
                         <CardBuy>
                           <CardTextBuy>12.000 <CardImageCoin style={{ width: "36px", height: "36px" }} src={coin} alt="Coin" /></CardTextBuy>
-                          {hovered && dineroCompleto ? <Button onClick={() => { handleChange(true) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
+                          {hovered && dineroCompleto ? <Button onClick={() => { handleChange(true,item._id) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
                           {/*<ButtonBuy onClick={() => { alert("hola") }}>Reedem now</ButtonBuy>*/}
                         </CardBuy>
                       </CardOverlay> : null}

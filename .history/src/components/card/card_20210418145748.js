@@ -40,9 +40,6 @@ export function Card() {
   const { Products } = useContext(AppContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
-  const [key, setKey] = useState("");
-
-
   const [queryMatch, setQueryMatch] = useState({
     matches: window.innerWidth > 768 ? true : false,
   });
@@ -60,10 +57,9 @@ export function Card() {
     setIsReedem(false)
   };
 
-  const handleReedme = (key) => {
+  const handleReedme = () => {
     setIsReedem(true)
     setIsOpenModal(false);
-    setKey(key);
   };
 
   const handleConfirmationMessage = () => {
@@ -95,20 +91,19 @@ export function Card() {
 
       <CardWrapper>
         {Products.map((item, index) => {
-          console.log(item._id)
+          console.log(index)
           return (
-            <section key={item._id}>
-              {console.log(key === item._id)}
-              <CardBody background={key === item._id && isReedem ? error ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
-                { key === item._id &&  isReedem ?
-                   <div>
+            <section key={index}>
+              <CardBody background={isReedem ? error ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
+                {isReedem ?
+                  <div>
                     <CardImageDiv>
                       <CardImage widthImage={"60%"} heightImage={"auto"} src={error ? sad : smile} />
                     </CardImageDiv>
                     <CardTittleH3 textAlign="center" color="#f0faff">{error ? "Error!" : "Success!"}</CardTittleH3>
                     <CardTittleH4 textAlign="center" color="#f0faff">You've redeem the product successfully</CardTittleH4>
                     <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: error ? "#bf0000" : "#009a00", }} tittle={error ? "TRY AGAIN" : "CONTINUE"}></Button>
-                  </div> 
+                  </div>
                   :
                   <div>
                     <CardDivIcon>
@@ -129,14 +124,15 @@ export function Card() {
                       tittle={"Reedem"}
                       propsModal={propsModal}
                     >
-                      
+
                       <CardConfirmation>
                         <CardTextConfirmation>Are you sure?</CardTextConfirmation>
                         <CardButtonConfirmation>
-                          <Button onClick={() => {handleReedme(item._id)}} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"Yes"} />
+                          <Button onClick={handleReedme} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"Yes"} />
                           <Button onClick={() => { handleChange(false) }} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"No"} />
                         </CardButtonConfirmation>
-                      </CardConfirmation> 
+                      </CardConfirmation>
+
                     </Modal>
 
                     {hovered ?

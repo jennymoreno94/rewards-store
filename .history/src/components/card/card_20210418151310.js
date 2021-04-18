@@ -98,9 +98,8 @@ export function Card() {
           console.log(item._id)
           return (
             <section key={item._id}>
-              {console.log(key === item._id)}
-              <CardBody background={key === item._id && isReedem ? error ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
-                { key === item._id &&  isReedem ?
+              <CardBody background={key === item._id ? isReedem ? error ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null : null}>
+                {isReedem ?
                    <div>
                     <CardImageDiv>
                       <CardImage widthImage={"60%"} heightImage={"auto"} src={error ? sad : smile} />
