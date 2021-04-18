@@ -3,7 +3,7 @@ import {
   CardWrapper,
   CardBody,
   CardTittleH3,
-  CardTittleH4,
+  CardProduct,
   CardImage,
   CardIcon,
   CardDivIcon,
@@ -89,23 +89,39 @@ export function Card() {
   }
   return (
     <>
- 
       <CardWrapper>
         {dataFilters.map((item, index) => {
           return (
             <section key={index}>
-              <CardBody background={isReedem ? error ? "linear-gradient(to left, #ed213a, #93291e);":"linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
+
+
+
+              <CardBody background={isReedem ? "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
+
+
                 {isReedem ?
                   <div>
                     <CardImageDiv>
                       <CardImage widthImage={"60%"} heightImage={"auto"} src={error ? sad : smile} />
                     </CardImageDiv>
+
+
                     <CardTittleH3 textAlign="center" color="#f0faff">Success!</CardTittleH3>
-                    <CardTittleH4 textAlign="center" color="#f0faff">You've redeem the product successfully</CardTittleH4>
-                    <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: error ?  "#bf0000": "#009a00", }} tittle={ error ? "TRY AGAIN" : "CONTINUE"}></Button>
+                    <CardProduct>You've redeem the product successfully</CardProduct>
+
+                    {/*<CardTextBuy>You've redeem the product successfully</CardTextBuy>*/}
+                    <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", }} tittle={"Continue"}></Button>
+                    {/*<ButtonBuy onClick={() => { alert("hola") }}>Reedem now</ButtonBuy>*/}
+
+
                   </div>
+
+
+
                   :
                   <div>
+
+
                     <CardDivIcon>
                       {dineroIncompleto ?
                         <CardNeed>You need 1000 <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
@@ -117,7 +133,7 @@ export function Card() {
                     </CardImageDiv>
                     <CardLine />
                     <CardTittleH3>Latops</CardTittleH3>
-                    <CardTittleH4>Acer Aspire E1-522</CardTittleH4>
+                    <CardProduct>Acer Aspire E1-522</CardProduct>
                     <Modal
                       isOpenModal={isOpenModal}
                       setIsOpenModal={setIsOpenModal}

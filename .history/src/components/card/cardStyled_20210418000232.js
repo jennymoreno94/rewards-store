@@ -43,9 +43,14 @@ export const CardImageDiv = styled.div`
 `;
 
 export const CardImage = styled.img`
+  /*display: block;
+  width: 100%;
+  height: auto;*/
+
   display: block;
   width: ${props => props.widthImage ? props.widthImage : "100%"};
   height: ${props => props.heightImage ? props.widthImage : "auto"};
+  align-content:center;
 `;
 
 export const CardLine = styled.hr`
@@ -85,18 +90,14 @@ export const CardImageCoin = styled.img`
   vertical-align:middle;
 `;
 
-export const CardTittleH3 = styled.h3`
+export const CardCategory = styled.h3`
   font-family: Quicksand, arial, sans-serif;
   margin-left: 16px;
-  text-align: ${props => props.textAlign};//center;
-  color: ${props => props.color} //#f0faff
 `;
 
-export const CardTittleH4 = styled.h4`
+export const CardProduct = styled.h4`
   font-family: Quicksand, arial, sans-serif;
   margin-left: 18px;
-  text-align:${props => props.textAlign};
-  color:${props => props.color}
 `;
 
 export const ButtonBuy = styled.button`
@@ -147,10 +148,24 @@ export const CardButtonConfirmation = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 0.1rem;
-    flex-direction:row; 
+    flex-direction:row;
+    
 `;
 
-export const ConfirmationMessage = styled.h3`
-  font-family: Quicksand, arial, sans-serif;
-  margin-left: 16px;
+export const CardMessageConfirmation = styled.div`
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05), 0 0px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    padding-bottom: 1px;
+    margin: 0.5rem;
+    position: relative;
+    background: #a8ff78;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+`;
+
+export const CardImageMessageConfirmation = styled.img`
+  width: 25px;
+  height: 25px;
+  vertical-align:middle;
 `;

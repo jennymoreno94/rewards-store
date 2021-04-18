@@ -85,18 +85,18 @@ export const CardImageCoin = styled.img`
   vertical-align:middle;
 `;
 
-export const CardTittleH3 = styled.h3`
+export const CardCategory = styled.h3`
   font-family: Quicksand, arial, sans-serif;
   margin-left: 16px;
   text-align: ${props => props.textAlign};//center;
   color: ${props => props.color} //#f0faff
 `;
 
-export const CardTittleH4 = styled.h4`
+export const CardProduct = styled.h4`
   font-family: Quicksand, arial, sans-serif;
   margin-left: 18px;
-  text-align:${props => props.textAlign};
-  color:${props => props.color}
+  text-align:center;
+  color: #f0faff
 `;
 
 export const ButtonBuy = styled.button`

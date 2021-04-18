@@ -92,7 +92,7 @@ export const CardTittleH3 = styled.h3`
   color: ${props => props.color} //#f0faff
 `;
 
-export const CardTittleH4 = styled.h4`
+export const CardProduct = styled.h4`
   font-family: Quicksand, arial, sans-serif;
   margin-left: 18px;
   text-align:${props => props.textAlign};

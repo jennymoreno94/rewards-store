@@ -85,18 +85,14 @@ export const CardImageCoin = styled.img`
   vertical-align:middle;
 `;
 
-export const CardTittleH3 = styled.h3`
+export const CardCategory = styled.h3`
   font-family: Quicksand, arial, sans-serif;
   margin-left: 16px;
-  text-align: ${props => props.textAlign};//center;
-  color: ${props => props.color} //#f0faff
 `;
 
-export const CardTittleH4 = styled.h4`
+export const CardProduct = styled.h4`
   font-family: Quicksand, arial, sans-serif;
   margin-left: 18px;
-  text-align:${props => props.textAlign};
-  color:${props => props.color}
 `;
 
 export const ButtonBuy = styled.button`
@@ -147,10 +143,14 @@ export const CardButtonConfirmation = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 0.1rem;
-    flex-direction:row; 
+    flex-direction:row;
+    
 `;
 
-export const ConfirmationMessage = styled.h3`
-  font-family: Quicksand, arial, sans-serif;
-  margin-left: 16px;
+
+
+export const CardImageMessageConfirmation = styled.img`
+  width: 25px;
+  height: 25px;
+  vertical-align:middle;
 `;

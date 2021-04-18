@@ -102,7 +102,7 @@ export function Card() {
                     </CardImageDiv>
                     <CardTittleH3 textAlign="center" color="#f0faff">Success!</CardTittleH3>
                     <CardTittleH4 textAlign="center" color="#f0faff">You've redeem the product successfully</CardTittleH4>
-                    <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: error ?  "#bf0000": "#009a00", }} tittle={ error ? "TRY AGAIN" : "CONTINUE"}></Button>
+                    <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: "#009a00", }} tittle={ error ? "TRY AGAIN" : "CONTINUE"}></Button>
                   </div>
                   :
                   <div>

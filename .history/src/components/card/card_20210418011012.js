@@ -94,7 +94,7 @@ export function Card() {
         {dataFilters.map((item, index) => {
           return (
             <section key={index}>
-              <CardBody background={isReedem ? error ? "linear-gradient(to left, #ed213a, #93291e);":"linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
+              <CardBody background={isReedem ? error ? "linear-gradient(to top, #cb356b, #bd3f32);":"linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
                 {isReedem ?
                   <div>
                     <CardImageDiv>
@@ -102,7 +102,7 @@ export function Card() {
                     </CardImageDiv>
                     <CardTittleH3 textAlign="center" color="#f0faff">Success!</CardTittleH3>
                     <CardTittleH4 textAlign="center" color="#f0faff">You've redeem the product successfully</CardTittleH4>
-                    <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: error ?  "#bf0000": "#009a00", }} tittle={ error ? "TRY AGAIN" : "CONTINUE"}></Button>
+                    <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: "#009a00", }} tittle={ error ? "TRY AGAIN" : "CONTINUE"}></Button>
                   </div>
                   :
                   <div>

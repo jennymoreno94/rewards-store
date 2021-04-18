@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
   CardWrapper,
   CardBody,
-  CardTittleH3,
-  CardTittleH4,
+  CardCategory,
+  CardProduct,
   CardImage,
   CardIcon,
   CardDivIcon,
@@ -28,12 +28,10 @@ import coin from '../../assets/coin.svg'
 import { Button } from '../transversal/buttonComponent/button'
 import { Modal } from '../modal/modal'
 import smile from '../../assets/smiley.svg'
-import sad from '../../assets/sad.svg'
 
 const dataFilters = [1, 2, 3, 4, 5, 6];
 let dineroIncompleto = true;
 let hovered = true;
-let error = true;
 
 export function Card() {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -78,10 +76,6 @@ export function Card() {
     paddingText: queryMatch.matches ? "0 0 0 3rem" : "0 0 0 0.5rem",
   }
 
-  const propsButtonConfirmation = {
-    margin: "0rem 2rem 4rem",
-  }
-
   const propsModal = {
     width: queryMatch.matches ? "400px" : "300px",
     height: "auto",
@@ -89,23 +83,37 @@ export function Card() {
   }
   return (
     <>
- 
       <CardWrapper>
         {dataFilters.map((item, index) => {
           return (
             <section key={index}>
-              <CardBody background={isReedem ? error ? "linear-gradient(to left, #ed213a, #93291e);":"linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
+
+
+
+              <CardBody background={isReedem ? "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
+
+
                 {isReedem ?
                   <div>
                     <CardImageDiv>
-                      <CardImage widthImage={"60%"} heightImage={"auto"} src={error ? sad : smile} />
+                      <CardImage widthImage={"60%"} heightImage={"auto"} src={smile} />
                     </CardImageDiv>
-                    <CardTittleH3 textAlign="center" color="#f0faff">Success!</CardTittleH3>
-                    <CardTittleH4 textAlign="center" color="#f0faff">You've redeem the product successfully</CardTittleH4>
-                    <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: error ?  "#bf0000": "#009a00", }} tittle={ error ? "TRY AGAIN" : "CONTINUE"}></Button>
+                
+                      <CardCategory>Success!</CardCategory>
+                      <CardProduct>You've redeem the product successfully</CardProduct>
+
+                      {/*<CardTextBuy>You've redeem the product successfully</CardTextBuy>*/}
+                      <Button onClick={handleConfirmationMessage} propsButton={propsButton} tittle={"Continue"}></Button>
+                      {/*<ButtonBuy onClick={() => { alert("hola") }}>Reedem now</ButtonBuy>*/}
+                   
                   </div>
+
+
+
                   :
                   <div>
+
+
                     <CardDivIcon>
                       {dineroIncompleto ?
                         <CardNeed>You need 1000 <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
@@ -113,11 +121,11 @@ export function Card() {
                         hovered ? <div style={{ margin: "2.3rem" }} /> : <CardIcon src={iconblue} />}
                     </CardDivIcon>
                     <CardImageDiv>
-                      <CardImage src={acer} />
+                      <CardImage  src={acer} />
                     </CardImageDiv>
                     <CardLine />
-                    <CardTittleH3>Latops</CardTittleH3>
-                    <CardTittleH4>Acer Aspire E1-522</CardTittleH4>
+                    <CardCategory>Latops</CardCategory>
+                    <CardProduct>Acer Aspire E1-522</CardProduct>
                     <Modal
                       isOpenModal={isOpenModal}
                       setIsOpenModal={setIsOpenModal}
