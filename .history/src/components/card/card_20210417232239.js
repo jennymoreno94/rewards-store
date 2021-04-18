@@ -94,7 +94,7 @@ export function Card() {
                   </CardImageDiv>
                   <CardBuy>
                     <CardTextBuy>Success!</CardTextBuy>
-                    {/*<CardTextBuy>You've redeem the product successfully</CardTextBuy>*/}
+                    <CardTextBuy>You've redeem the product successfully</CardTextBuy>
                     <Button onClick={handleConfirmationMessage} propsButton={propsButton} tittle={"Continue"}></Button>
                     {/*<ButtonBuy onClick={() => { alert("hola") }}>Reedem now</ButtonBuy>*/}
                   </CardBuy>

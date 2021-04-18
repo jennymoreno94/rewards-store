@@ -2,7 +2,7 @@
 import styled from "styled-components"
 
 export const ModalDiv = styled.div`
-    background-color: rgba(0,0,0, .85);
+    background-color: ${props => props.theme.backgroundColor};  //rgba(0,0,0, .85);
     width: 100%;
     height: 100%;
     position: fixed;

@@ -57,10 +57,6 @@ export function Card() {
     setIsOpenModal(false);
   };
 
-  const handleConfirmationMessage = () => {
-    setIsReedem(false)  
-  };
-
   const propsButton = {
     height: "auto",
     width: "80%",
@@ -93,9 +89,8 @@ export function Card() {
                     <CardImage src={smile} />
                   </CardImageDiv>
                   <CardBuy>
-                    <CardTextBuy>Success!</CardTextBuy>
-                    {/*<CardTextBuy>You've redeem the product successfully</CardTextBuy>*/}
-                    <Button onClick={handleConfirmationMessage} propsButton={propsButton} tittle={"Continue"}></Button>
+                    <CardTextBuy>12.000 <CardImageCoin style={{ width: "36px", height: "36px" }} src={coin} alt="Coin" /></CardTextBuy>
+                    <Button onClick={() => { handleChange(true) }} propsButton={propsButton} tittle={"Reedem now"}></Button>
                     {/*<ButtonBuy onClick={() => { alert("hola") }}>Reedem now</ButtonBuy>*/}
                   </CardBuy>
 

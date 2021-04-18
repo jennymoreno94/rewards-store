@@ -44,6 +44,7 @@ export function Header() {
     const propsModal = {
         width: queryMatch.matches ? "400px" : "300px",
         height: "150px",
+        backgroundColor: "rgba(0,0,0, .85)"
     }
 
     useEffect(() => {
@@ -73,7 +74,7 @@ export function Header() {
                 <Modal
                     isOpenModal={isOpenModal}
                     setIsOpenModal={setIsOpenModal}
-                    tittle={`Add Coins ${isOpenModal}`}
+                    tittle={`Add Coins`}
                     propsModal={propsModal}
                 >
                     <Button onClick={() => {handleAddCoins(coins + 1000)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8" }} tittle={"1000"}>

@@ -143,21 +143,3 @@ export const CardButtonConfirmation = styled.div`
     flex-direction:row;
     
 `;
-
-export const CardMessageConfirmation = styled.div`
-     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05), 0 0px 10px rgba(0, 0, 0, 0.08);
-    border-radius: 10px;
-    padding-bottom: 1px;
-    margin: 0.5rem;
-    position: relative;
-    background: #a8ff78;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-`;
-
-export const CardImageMessageConfirmation = styled.img`
-  width: 25px;
-  height: 25px;
-  vertical-align:middle;
-`;

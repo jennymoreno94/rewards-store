@@ -28,7 +28,7 @@ export function Modal(props) {
     return (
         <section>
 
-            <ModalDiv open={props.isOpenModal} >
+            <ModalDiv theme={props.propsModal} open={props.isOpenModal} >
                 <ModalDialog theme={props.propsModal} >
                     <ModalTop>
                         <TextTitle>{props.tittle}</TextTitle>

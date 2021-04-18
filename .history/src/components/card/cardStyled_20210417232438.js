@@ -41,7 +41,7 @@ export const CardImageDiv = styled.div`
 
 export const CardImage = styled.img`
   display: block;
-  width: 100%;
+  width: 80%;
   height: auto;
 `;
 
