@@ -39,7 +39,7 @@ export function Card() {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
   const [key, setKey] = useState("");
-  const isHovered = true;
+  isHovered = true;
 
   const [queryMatch, setQueryMatch] = useState({
     matches: window.innerWidth > 768 ? true : false,
@@ -91,6 +91,7 @@ export function Card() {
   }
   return (
     <>
+
       <CardWrapper>
         {Object.entries(productsList).length === 0 ? <h1>Sin datos</h1> :
         productsList.map((item, index) => {
