@@ -39,7 +39,7 @@ export function Card() {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
   const [key, setKey] = useState("");
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(true);
 
   const [queryMatch, setQueryMatch] = useState({
     matches: window.innerWidth > 768 ? true : false,
@@ -93,8 +93,7 @@ export function Card() {
     <>
 
       <CardWrapper
-        onMouseOver={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseLeave={() => {setIsHovered(true)}}
       >
         {Object.entries(productsList).length === 0 ? <h1>Sin datos</h1> :
         productsList.map((item, index) => {

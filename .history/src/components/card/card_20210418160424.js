@@ -39,7 +39,7 @@ export function Card() {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
   const [key, setKey] = useState("");
-  const [isHovered, setIsHovered] = useState(false);
+  const [ishovered, setIshovered] = useState();
 
   const [queryMatch, setQueryMatch] = useState({
     matches: window.innerWidth > 768 ? true : false,
@@ -92,10 +92,7 @@ export function Card() {
   return (
     <>
 
-      <CardWrapper
-        onMouseOver={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+      <CardWrapper>
         {Object.entries(productsList).length === 0 ? <h1>Sin datos</h1> :
         productsList.map((item, index) => {
           return (
@@ -114,7 +111,7 @@ export function Card() {
                   <div>
                     <CardDivIcon>
                       {dineroCompleto ?
-                        isHovered ? <div style={{ margin: "2.3rem" }} /> : <CardIcon src={iconblue} /> :
+                        ishovered ? <div style={{ margin: "2.3rem" }} /> : <CardIcon src={iconblue} /> :
                         <CardNeed>You need 1000 <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
                       }
                     </CardDivIcon>
@@ -140,7 +137,7 @@ export function Card() {
                       </CardConfirmation> 
                     </Modal>
 
-                    {isHovered ?
+                    {ishovered ?
                       <CardOverlay>
 
                         <CardDivIcon>
@@ -152,7 +149,7 @@ export function Card() {
                         </CardDivIcon>
                         <CardBuy>
                           <CardTextBuy>{item.cost}<CardImageCoin style={{ width: "36px", height: "36px" }} src={coin} alt="Coin" /></CardTextBuy>
-                          {isHovered && dineroCompleto ? <Button onClick={() => { handleChange(true,item._id) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
+                          {ishovered && dineroCompleto ? <Button onClick={() => { handleChange(true,item._id) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
                           {/*<ButtonBuy onClick={() => { alert("hola") }}>Reedem now</ButtonBuy>*/}
                         </CardBuy>
                       </CardOverlay> : null}

@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import Products from '../context/data'
-export const AppContext = React.createContext(Products);
+import listProducts from '../context/data'
+export const AppContext = React.createContext(listProducts);
 
 
 
 
 export function AppProvider({ children }) {
 
-    const [productsList] = useState(Products);
+    const [listProducts] = useState(listProducts);
 
     return (
         <AppContext.Provider
         value={{
-            productsList
+            listProducts
           }}>
             {children}
         </AppContext.Provider>

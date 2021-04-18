@@ -31,7 +31,9 @@ import { Modal } from '../modal/modal'
 import smile from '../../assets/smiley.svg'
 import sad from '../../assets/sad.svg'
 
+const dataFilters = [1, 2, 3, 4, 5, 6];
 let dineroCompleto = true;
+let hovered = true;
 let error = false;
 
 export function Card() {
@@ -39,7 +41,7 @@ export function Card() {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
   const [key, setKey] = useState("");
-  const [isHovered, setIsHovered] = useState(false);
+
 
   const [queryMatch, setQueryMatch] = useState({
     matches: window.innerWidth > 768 ? true : false,
@@ -92,12 +94,8 @@ export function Card() {
   return (
     <>
 
-      <CardWrapper
-        onMouseOver={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {Object.entries(productsList).length === 0 ? <h1>Sin datos</h1> :
-        productsList.map((item, index) => {
+      <CardWrapper>
+        {Products.map((item, index) => {
           return (
             <section key={item._id}>
               <CardBody background={key === item._id && isReedem ? error ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
@@ -114,7 +112,7 @@ export function Card() {
                   <div>
                     <CardDivIcon>
                       {dineroCompleto ?
-                        isHovered ? <div style={{ margin: "2.3rem" }} /> : <CardIcon src={iconblue} /> :
+                        hovered ? <div style={{ margin: "2.3rem" }} /> : <CardIcon src={iconblue} /> :
                         <CardNeed>You need 1000 <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
                       }
                     </CardDivIcon>
@@ -140,7 +138,7 @@ export function Card() {
                       </CardConfirmation> 
                     </Modal>
 
-                    {isHovered ?
+                    {hovered ?
                       <CardOverlay>
 
                         <CardDivIcon>
@@ -152,7 +150,7 @@ export function Card() {
                         </CardDivIcon>
                         <CardBuy>
                           <CardTextBuy>{item.cost}<CardImageCoin style={{ width: "36px", height: "36px" }} src={coin} alt="Coin" /></CardTextBuy>
-                          {isHovered && dineroCompleto ? <Button onClick={() => { handleChange(true,item._id) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
+                          {hovered && dineroCompleto ? <Button onClick={() => { handleChange(true,item._id) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
                           {/*<ButtonBuy onClick={() => { alert("hola") }}>Reedem now</ButtonBuy>*/}
                         </CardBuy>
                       </CardOverlay> : null}

@@ -1,4 +1,4 @@
-const Products = [ 
+const listProducts = [ 
     {
       "_id": "5a033eeb364bf301523e9b92",
       "name": "Sandalia Pale Gold YSL",
@@ -22,4 +22,4 @@ const Products = [
     
     
   ]
-  export default Products;
+  export default listProducts;

@@ -93,8 +93,7 @@ export function Card() {
     <>
 
       <CardWrapper
-        onMouseOver={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseOver={() => {setIsHovered(true)}}
       >
         {Object.entries(productsList).length === 0 ? <h1>Sin datos</h1> :
         productsList.map((item, index) => {
