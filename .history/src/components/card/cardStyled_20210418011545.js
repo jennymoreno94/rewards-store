@@ -96,7 +96,7 @@ export const CardTittleH4 = styled.h4`
   font-family: Quicksand, arial, sans-serif;
   margin-left: 18px;
   text-align:${props => props.textAlign};
-  color:${props => props.color};
+  color:${props => props.color}
 `;
 
 export const ButtonBuy = styled.button`
