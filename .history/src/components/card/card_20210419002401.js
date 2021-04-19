@@ -32,9 +32,10 @@ import smile from '../../assets/smiley.svg'
 import sad from '../../assets/sad.svg'
 import postData from '../../utils/postMethods';
 
+let dineroCompleto = true;
 
 export function Card() {
-  const { user,productsList } = useContext(AppContext);
+  const { productsList } = useContext(AppContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -53,7 +54,7 @@ export function Card() {
     })
   });
 
-  const handleChange = (open,key) => {
+  const handleChange = (open, key) => {
     setIsOpenModal(open);
     setIsReedem(false)
     setKey(key);
@@ -61,7 +62,7 @@ export function Card() {
 
   const handleReedme = (key) => {
     return postData.postRedeem(key).then((response) => {
-      if (response.error === undefined || response.error === "") {
+      if (response.error !== undefined || response.error !== "") {
         setIsError(false);
         setMessage(response.message)
       } else {
@@ -70,8 +71,10 @@ export function Card() {
       }
       setIsOpenModal(false);
       setIsReedem(true)
+
     }).catch((error) => {
-      setMessage(error)
+      debugger;
+      setMessage(error.error)
       setIsError(true);
     });
 
@@ -121,9 +124,9 @@ export function Card() {
                     :
                     <div>
                       <CardDivIcon>
-                        {(user.points > item.cost) ?
+                        {dineroCompleto ?
                           isHovered ? <div style={{ margin: "2.3rem" }} /> : <CardIcon src={iconblue} /> :
-                          <CardNeed>You need {item.cost - user.points} <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
+                          <CardNeed>You need 1000 <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
                         }
                       </CardDivIcon>
                       <CardImageDiv>
@@ -142,8 +145,8 @@ export function Card() {
                         <CardConfirmation>
                           <CardTextConfirmation>Are you sure?</CardTextConfirmation>
                           <CardButtonConfirmation>
-                            <Button onClick={() => { handleReedme(key) }} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"Yes"} />
-                            <Button onClick={() => { handleChange(false,key) }} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"No"} />
+                            <Button onClick={() => { handleReedme(item._id) }} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"Yes"} />
+                            <Button onClick={() => { handleChange(false, item._id) }} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"No"} />
                           </CardButtonConfirmation>
                         </CardConfirmation>
                       </Modal>
@@ -152,15 +155,15 @@ export function Card() {
                         <CardOverlay>
 
                           <CardDivIcon>
-                            {(user.points > item.cost) ?
+                            {dineroCompleto ?
                               <CardIcon src={iconwhite} /> :
-                              <CardNeed style={{ opacity: "1", background: "#fbfbfb", color: "#616161" }}>You need {item.cost - user.points} <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
+                              <CardNeed style={{ opacity: "1", background: "#fbfbfb", color: "#616161" }}>You need 1000 <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
                             }
                             {/*{ hovered && !dineroIncompleto ? <CardIcon src={iconwhite}/> :  <CardNeed style={{opacity: "1",background:"#fbfbfb",color:"#616161"}}>You need 1000 <CardImageCoin src={coin} alt="Coin" /> </CardNeed>   }*/}
                           </CardDivIcon>
                           <CardBuy>
                             <CardTextBuy>{item.cost}<CardImageCoin style={{ width: "36px", height: "36px" }} src={coin} alt="Coin" /></CardTextBuy>
-                            {isHovered && (user.points > item.cost) ? <Button onClick={() => { handleChange(true, item._id) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
+                            {isHovered && dineroCompleto ? <Button onClick={() => { handleChange(true, item._id) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
                             {/*<ButtonBuy onClick={() => { alert("hola") }}>Reedem now</ButtonBuy>*/}
                           </CardBuy>
                         </CardOverlay> : null}

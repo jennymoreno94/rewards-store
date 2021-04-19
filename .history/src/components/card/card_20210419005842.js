@@ -32,6 +32,7 @@ import smile from '../../assets/smiley.svg'
 import sad from '../../assets/sad.svg'
 import postData from '../../utils/postMethods';
 
+let dineroCompleto = true;
 
 export function Card() {
   const { user,productsList } = useContext(AppContext);

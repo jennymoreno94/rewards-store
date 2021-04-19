@@ -20,16 +20,14 @@ const postPoints = (coins) => {
 const postRedeem = (product) => {
     debugger;
     return new Promise((resolve,reject)=> {
-        fetch(url.postRedeem,{
+        fetch(url.postPoints,{
             method: "POST",
             headers : headers,
             body: JSON.stringify({
                 'productId': product
               })
         })
-        .then(response => {
-            resolve(response.json())
-            })
+        .then(response => resolve(response.json()))
         .catch(error => {
             console.log(`Error petición ${url.postPoints}:` + error.message);
             reject(error)

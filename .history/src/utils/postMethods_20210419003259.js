@@ -28,6 +28,7 @@ const postRedeem = (product) => {
               })
         })
         .then(response => {
+            debugger;
             resolve(response.json())
             })
         .catch(error => {

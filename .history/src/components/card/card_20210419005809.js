@@ -32,6 +32,7 @@ import smile from '../../assets/smiley.svg'
 import sad from '../../assets/sad.svg'
 import postData from '../../utils/postMethods';
 
+let dineroCompleto = true;
 
 export function Card() {
   const { user,productsList } = useContext(AppContext);
@@ -160,7 +161,7 @@ export function Card() {
                           </CardDivIcon>
                           <CardBuy>
                             <CardTextBuy>{item.cost}<CardImageCoin style={{ width: "36px", height: "36px" }} src={coin} alt="Coin" /></CardTextBuy>
-                            {isHovered && (user.points > item.cost) ? <Button onClick={() => { handleChange(true, item._id) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
+                            {isHovered && dineroCompleto ? <Button onClick={() => { handleChange(true, item._id) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
                             {/*<ButtonBuy onClick={() => { alert("hola") }}>Reedem now</ButtonBuy>*/}
                           </CardBuy>
                         </CardOverlay> : null}
