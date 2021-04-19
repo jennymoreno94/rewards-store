@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
+import {AppContext} from '../../context/appConext';
 import {
     HeaderWrapper,
     HeaderImage,
@@ -19,19 +20,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle, faHistory } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../transversal/buttonComponent/button'
 import { History } from "../history/history";
+import  postData from '../../utils/postMethods';
+
 
 export function Header() {
+    const { user} = useContext(AppContext);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
     });
-    const [coins, setCoins] = useState(1000);
-    
+
     const propsButton = {
         height: queryMatch.matches ? "40px" : "30px",
         backgroundColor: queryMatch.matches ? "#e9e7e7" : "#ffffff",
         padding: "0.2rem",
-        borderRadius: "1rem",
+        borderRadius: "1rem",           
         margin: "0 0 0 0.2rem",
         cursor: "pointer",
         fontFamily: "'Source Sans Pro', sans-serif",
@@ -64,8 +67,9 @@ export function Header() {
     };
 
     const handleAddCoins = (coins) => {
-        setCoins(coins)
+        return postData.postPoints(coins);  
     };
+
 
     return (
         <HeaderWrapper>
@@ -77,13 +81,13 @@ export function Header() {
                     tittle={`Add Coins`}
                     propsModal={propsModal}
                 >
-                    <Button onClick={() => {handleAddCoins(coins + 1000)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8" }} tittle={"1000"}>
+                    <Button onClick={() => {handleAddCoins(1000)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8" }} tittle={"1000"}>
                         <ImageCoin src={coin} alt="Coin" />
                     </Button>
-                    <Button onClick={() => {handleAddCoins(coins + 5000)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8" }} tittle={"5000"}>
+                    <Button onClick={() => {handleAddCoins(5000)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8" }} tittle={"5000"}>
                         <ImageCoin src={coin} alt="Coin" />
                     </Button>
-                    <Button onClick={() => {handleAddCoins(coins + 7500)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8"}} tittle={"7500"}>
+                    <Button onClick={() => {handleAddCoins(7500)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8"}} tittle={"7500"}>
                         <ImageCoin src={coin} alt="Coin" />
                     </Button>
 
@@ -97,8 +101,8 @@ export function Header() {
                         onClick={handleHistory} tittle={queryMatch.matches ? "History" : null}>
                         <FontAwesomeIcon icon={faHistory} style={{ color: "#FF8000", fontSize: "25px", padding: "0.2rem" }} />
                     </Button>
-                    <UserName> Jenny Moreno Vallejo </UserName>
-                    <Button propsButton={{ ...propsButton, backgroundColor: "#e9e7e7", cursor: "auto" }} tittle={coins}>
+                    <UserName> {user.name} </UserName>
+                    <Button propsButton={{ ...propsButton, backgroundColor: "#e9e7e7", cursor: "auto" }} tittle={user.points}>
                         <ImageCoin src={coin} alt="Coin" />
                     </Button>
                 </HeaderDiv>

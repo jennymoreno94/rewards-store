@@ -1,19 +1,32 @@
-import React, { useState } from 'react';
-import Products from '../context/data'
-export const AppContext = React.createContext(Products);
+import React, { useEffect, useState } from 'react';
+import getData from '../utils/getMethods';
 
-
-
+export const AppContext = React.createContext();
 
 export function AppProvider({ children }) {
+    const [productsList, setProductsList] = useState([]);
+    const [user, setUser] = useState([]);
+  
+    useEffect(() => {
+        return getData.getProducts()
+            .then(response => setProductsList(response));
+    }, [productsList, setProductsList])
 
-    const [productsList] = useState(Products);
+    useEffect(() => {
+        return getData.getUser()
+            .then(response => {
+                setUser(response);
+            });
+    }, [user, setUser])
+
 
     return (
         <AppContext.Provider
-        value={{
-            productsList
-          }}>
+            value={{
+                productsList,
+                user,
+                setUser
+            }}>
             {children}
         </AppContext.Provider>
     )
