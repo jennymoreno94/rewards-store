@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext,useState } from "react";
+import { AppContext } from '../../context/appConext';
 import {
     Row,
     Column,
@@ -8,7 +9,29 @@ import {
 const dataFilters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 export function History() {
+    const { history } = useContext(AppContext);
+    const [listHistory, setListHistory] = useState(history);
+    
+    
+    
+   /* const groupBy = key => array =>
+        array.reduce(
+            (objectsByKeyValue, obj) => ({
+                ...objectsByKeyValue,
+                [obj[key]]: (objectsByKeyValue[obj[key]] || []).concat(obj)
+            }),
+            {}
+        );*/
+  
+    //debugger;
+    ///const groupByBrand = history.groupBy(history, "_id")
+
+    //const groupByBrand = history.groupBy(history, "_id"); 
+    //console.log(groupByBrand)
     return (
+
+      
+
         <section>
             <Grid>
                 <Row>
@@ -17,14 +40,16 @@ export function History() {
                     <Column size={1} collapse="xs">Category</Column>
                     <Column size={1} collapse="xs">Cost</Column>
                 </Row>
-                {dataFilters.map((item, index) => {
+
+                
+                {history.map((item, index) => {
                     return (
                         <div key={index}>
                             <Row>
-                                <Column size={1} collapse="xs">123456678</Column>
-                                <Column size={1} collapse="xs">Computador Lenovo</Column>
-                                <Column size={1} collapse="xs">Tecnología</Column>
-                                <Column size={1} collapse="xs">2.500.000</Column>
+                                <Column size={1} collapse="xs">{item.productId}</Column>
+                                <Column size={1} collapse="xs">{item.name}</Column>
+                                <Column size={1} collapse="xs">{item.category}</Column>
+                                <Column size={1} collapse="xs">{item.cost}</Column>
                             </Row>
 
                         </div>
