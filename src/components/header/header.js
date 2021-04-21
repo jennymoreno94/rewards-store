@@ -17,14 +17,14 @@ import logo from '../../assets/aerolab-logo.svg'
 import coin from '../../assets/coin.svg'
 import { Modal } from '../modal/modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle, faHistory } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle, faHistory,faHome } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../transversal/buttonComponent/button'
 import { History } from "../history/history";
 import  postData from '../../utils/postMethods';
 
 
 export function Header() {
-    const { user} = useContext(AppContext);
+    const { user,setIsHistory,isHistory} = useContext(AppContext);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
@@ -63,7 +63,7 @@ export function Header() {
     };
 
     const handleHistory = () => {
-        <History />
+        setIsHistory(!isHistory)
     };
 
     const handleAddCoins = (coins) => {
@@ -98,8 +98,8 @@ export function Header() {
                         <FontAwesomeIcon icon={faPlusCircle} style={{ color: "#FFCF00", fontSize: "25px", padding: "0.2rem" }} />
                     </Button>
                     <Button propsButton={propsButton}
-                        onClick={handleHistory} tittle={queryMatch.matches ? "History" : null}>
-                        <FontAwesomeIcon icon={faHistory} style={{ color: "#FF8000", fontSize: "25px", padding: "0.2rem" }} />
+                        onClick={handleHistory} tittle={queryMatch.matches ? isHistory ? "Home" : "History": null}>
+                        <FontAwesomeIcon icon={isHistory ? faHome :faHistory} style={{ color: "#FF8000", fontSize: "25px", padding: "0.2rem" }} />
                     </Button>
                     <UserName> {user.name} </UserName>
                     <Button propsButton={{ ...propsButton, backgroundColor: "#e9e7e7", cursor: "auto" }} tittle={user.points}>

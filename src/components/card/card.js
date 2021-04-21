@@ -34,7 +34,7 @@ import postData from '../../utils/postMethods';
 
 
 export function Card() {
-  const { user,productsList } = useContext(AppContext);
+  const { user,productsList,isHistory } = useContext(AppContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -103,7 +103,7 @@ export function Card() {
   }
   return (
     <>
-      <CardWrapper>
+      { !isHistory ? <CardWrapper>
         {Object.entries(productsList).length === 0 ? <h1>Sin datos</h1> :
           productsList.map((item, index) => {
             return (
@@ -170,7 +170,7 @@ export function Card() {
               </section>
             );
           })}
-      </CardWrapper>
+      </CardWrapper> : null}
     </>
 
   );

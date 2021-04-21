@@ -46,14 +46,23 @@ export const Column = styled.div`
 export const Grid = styled.div`
     width:98%;
     margin: 0px 1rem 0px 0.5rem;
-    border: 1px solid red;
+  
+    
 `;
 
+export const Principal = styled.div`
+    width:100%;
+    height:auto;
+    &:nth-child(even) {
+      background: #ebe7e7
+    } 
+`;
 
 export const Row = styled.div`
     display:flex;
     padding: 4px 8px;
-    
+    border: 1px solid #ddd;
+    background-color: ${props => props.backgroungColor};//#15dbff;
 `;
 
 const media = {
@@ -69,5 +78,8 @@ export const Column = styled.div`
    ${(props) => props.collapse && media[props.collapse](`
         display:none;
   `)};
+ 
+ 
+    
    
 `;
