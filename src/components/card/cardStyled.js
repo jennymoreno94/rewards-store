@@ -14,9 +14,6 @@ export const CardBody = styled.div`
     margin: 0.5rem;
     position: relative;
     background: ${props => props.background};  //linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    &:hover{
-      opacity: 0.7;
-    }
 `;
 
 export const CardOverlay = styled.div`

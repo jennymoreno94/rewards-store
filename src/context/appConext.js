@@ -25,8 +25,8 @@ export function AppProvider({ children }) {
         return getData.getHistory()
             .then(response => {
                 var agruparProductos = response.reduce(function (accumulator, currentValue, index) {
-                    let resultado = accumulator.findIndex((element) => element != undefined ?  element.productId === currentValue.productId : null);
-                    if (resultado != -1) {
+                    let resultado = accumulator.findIndex((element) => element !== undefined ?  element.productId === currentValue.productId : null);
+                    if (resultado !== -1) {
                         index = resultado;
                     }
                     accumulator[index] = (accumulator[index] || {...currentValue, cost: 0}) 

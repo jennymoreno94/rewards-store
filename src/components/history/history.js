@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AppContext } from '../../context/appConext';
 import {
     Row,
@@ -6,59 +6,76 @@ import {
     Grid,
     Principal
 } from "../history/historyStyled";
+import {
+    CardWrapper,
+    CardBody,
+    CardTittleH3,
+    CardTittleH4,
+    CardImage,
+    CardLine,
+    CardImageDiv,
+} from '../card/cardStyled'
 
-const dataFilters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 export function History() {
-    const { history,isHistory } = useContext(AppContext);
+    const { history, isHistory } = useContext(AppContext);
     const [listHistory, setListHistory] = useState(history);
 
+    const [queryMatch, setQueryMatch] = useState({
+        matches: window.innerWidth > 768 ? true : false,
+    });
 
+    useEffect(() => {
+        window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
+            let matches = e.matches;
+            setQueryMatch({ ...queryMatch, matches })
+        })
+    });
 
-    /* const groupBy = key => array =>
-         array.reduce(
-             (objectsByKeyValue, obj) => ({
-                 ...objectsByKeyValue,
-                 [obj[key]]: (objectsByKeyValue[obj[key]] || []).concat(obj)
-             }),
-             {}
-         );*/
-
-    //debugger;
-    ///const groupByBrand = history.groupBy(history, "_id")
-
-    //const groupByBrand = history.groupBy(history, "_id"); 
-    //console.log(groupByBrand)
-    console.log(isHistory);
     return (
-
-
-
         <section>
-            
-            { isHistory ? <Grid>
-                <Row backgroungColor={"#7de1fa"}>
-                    <Column size={1} collapse="xs">Id</Column>
-                    <Column size={1} collapse="xs">Product</Column>
-                    <Column size={1} collapse="xs">Category</Column>
-                    <Column size={1} collapse="xs">Cost</Column>
-                </Row>
+            { isHistory ?
+                queryMatch.matches ?
+                    <Grid>
+                        <Row backgroungColor={"#7de1fa"}>
+                            <Column size={1} collapse="xs">Id</Column>
+                            <Column size={1} collapse="xs">Product</Column>
+                            <Column size={1} collapse="xs">Category</Column>
+                            <Column size={1} collapse="xs">Cost</Column>
+                        </Row>
 
 
-                {history.map((item, index) => {
-                    return (
-                        <Principal key={index}>
-                            <Row >
-                                <Column size={1} collapse="xs">{item.productId}</Column>
-                                <Column size={1} collapse="xs">{item.name}</Column>
-                                <Column size={1} collapse="xs">{item.category}</Column>
-                                <Column size={1} collapse="xs">{item.cost}</Column>
-                            </Row>
+                        {history.map((item, index) => {
+                            return (
+                                <Principal key={index}>
+                                    <Row >
+                                        <Column size={1} collapse="xs">{item.productId}</Column>
+                                        <Column size={1} collapse="xs">{item.name}</Column>
+                                        <Column size={1} collapse="xs">{item.category}</Column>
+                                        <Column size={1} collapse="xs">{item.cost}</Column>
+                                    </Row>
 
-                        </Principal>
-                    );
-                })}
-            </Grid> : null }
+                                </Principal>
+                            );
+                        })}
+                    </Grid> :
+                    <CardWrapper>
+                        {history.map((item, index) => {
+                            return (
+                                <CardBody>
+                                    <CardImageDiv>
+                                        <CardImage src={item.img.url} />
+                                    </CardImageDiv>
+                                    <CardLine />
+                                    <CardTittleH3>{item.category}</CardTittleH3>
+                                    <CardTittleH4>{item.name}</CardTittleH4>
+                                    <CardTittleH4>{` Cost: ${item.cost}`}</CardTittleH4>
+                                </CardBody>
+                            );
+                        })}
+                    </CardWrapper>
+
+                : null}
         </section>
     )
 }
