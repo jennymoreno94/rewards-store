@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/rewards-store/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/rewards-store/static/js/main.fb3a053e.chunk.js",
-    "main.js.map": "/rewards-store/static/js/main.fb3a053e.chunk.js.map",
-    "runtime-main.js": "/rewards-store/static/js/runtime-main.54c6a009.js",
-    "runtime-main.js.map": "/rewards-store/static/js/runtime-main.54c6a009.js.map",
-    "static/js/2.47e22653.chunk.js": "/rewards-store/static/js/2.47e22653.chunk.js",
-    "static/js/2.47e22653.chunk.js.map": "/rewards-store/static/js/2.47e22653.chunk.js.map",
-    "static/js/3.7f13690f.chunk.js": "/rewards-store/static/js/3.7f13690f.chunk.js",
-    "static/js/3.7f13690f.chunk.js.map": "/rewards-store/static/js/3.7f13690f.chunk.js.map",
+    "main.js": "/rewards-store/static/js/main.6a5468ba.chunk.js",
+    "main.js.map": "/rewards-store/static/js/main.6a5468ba.chunk.js.map",
+    "runtime-main.js": "/rewards-store/static/js/runtime-main.1a76ed05.js",
+    "runtime-main.js.map": "/rewards-store/static/js/runtime-main.1a76ed05.js.map",
+    "static/js/2.1fc9f457.chunk.js": "/rewards-store/static/js/2.1fc9f457.chunk.js",
+    "static/js/2.1fc9f457.chunk.js.map": "/rewards-store/static/js/2.1fc9f457.chunk.js.map",
+    "static/js/3.61b88626.chunk.js": "/rewards-store/static/js/3.61b88626.chunk.js",
+    "static/js/3.61b88626.chunk.js.map": "/rewards-store/static/js/3.61b88626.chunk.js.map",
     "index.html": "/rewards-store/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/rewards-store/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.47e22653.chunk.js.LICENSE.txt": "/rewards-store/static/js/2.47e22653.chunk.js.LICENSE.txt",
+    "static/js/2.1fc9f457.chunk.js.LICENSE.txt": "/rewards-store/static/js/2.1fc9f457.chunk.js.LICENSE.txt",
     "static/media/AcerAspire-x1.8786ab91.png": "/rewards-store/static/media/AcerAspire-x1.8786ab91.png",
     "static/media/aerolab-logo.0a8fb170.svg": "/rewards-store/static/media/aerolab-logo.0a8fb170.svg",
     "static/media/arrow-left.48260431.svg": "/rewards-store/static/media/arrow-left.48260431.svg",
@@ -24,9 +24,9 @@
     "static/media/smiley.c314f0e8.svg": "/rewards-store/static/media/smiley.c314f0e8.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.54c6a009.js",
-    "static/js/2.47e22653.chunk.js",
+    "static/js/runtime-main.1a76ed05.js",
+    "static/js/2.1fc9f457.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.fb3a053e.chunk.js"
+    "static/js/main.6a5468ba.chunk.js"
   ]
 }
