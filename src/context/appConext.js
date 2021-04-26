@@ -5,13 +5,16 @@ export const AppContext = React.createContext();
 
 export function AppProvider({ children }) {
     const [productsList, setProductsList] = useState([]);
+    const [filtersList, setFiltersList] = useState([]);
     const [history, setHistory] = useState([]);
     const [isHistory, setIsHistory] = useState(false);
     const [user, setUser] = useState([]);
 
     useEffect(() => {
         return getData.getProducts()
-            .then(response => setProductsList(response));
+            .then(response => {
+                setProductsList(response)
+            });
     }, [productsList, setProductsList])
 
     useEffect(() => {
@@ -25,11 +28,11 @@ export function AppProvider({ children }) {
         return getData.getHistory()
             .then(response => {
                 var agruparProductos = response.reduce(function (accumulator, currentValue, index) {
-                    let resultado = accumulator.findIndex((element) => element !== undefined ?  element.productId === currentValue.productId : null);
+                    let resultado = accumulator.findIndex((element) => element !== undefined ? element.productId === currentValue.productId : null);
                     if (resultado !== -1) {
                         index = resultado;
                     }
-                    accumulator[index] = (accumulator[index] || {...currentValue, cost: 0}) 
+                    accumulator[index] = (accumulator[index] || { ...currentValue, cost: 0 })
                     accumulator[index].cost += currentValue.cost
                     return accumulator;
                 }, []);
@@ -48,7 +51,10 @@ export function AppProvider({ children }) {
                 setUser,
                 history,
                 isHistory,
-                setIsHistory
+                setIsHistory,
+                setProductsList,
+                filtersList,
+                setFiltersList
             }}>
             {children}
         </AppContext.Provider>

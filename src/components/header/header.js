@@ -19,7 +19,6 @@ import { Modal } from '../modal/modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle, faHistory,faHome } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../transversal/buttonComponent/button'
-import { History } from "../history/history";
 import  postData from '../../utils/postMethods';
 
 

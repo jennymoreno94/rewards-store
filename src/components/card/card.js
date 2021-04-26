@@ -34,7 +34,11 @@ import postData from '../../utils/postMethods';
 
 
 export function Card() {
-  const { user, productsList, isHistory } = useContext(AppContext);
+  const { user, productsList, isHistory,filtersList } = useContext(AppContext);
+
+  const [productos, setProductos] = useState([]);
+  
+  
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -52,6 +56,11 @@ export function Card() {
       setQueryMatch({ ...queryMatch, matches })
     })
   });
+
+  useEffect(() => {
+    var product = Object.entries(filtersList).length === 0 ? productsList : filtersList
+    setProductos(product)
+  },[productsList,filtersList]);
 
   const handleChange = (open, key) => {
     setIsOpenModal(open);
@@ -101,12 +110,13 @@ export function Card() {
     height: "auto",
     backgroundColor: "rgba(0,0,0, .35)"
   }
+
   return (
     <>
       { isHistory ? null:
         <CardWrapper>
-          {Object.entries(productsList).length === 0 ? <h1>Sin datos</h1> :
-            productsList.map((item, index) => {
+          {Object.entries(productos).length === 0 ? <h1>Sin datos</h1> :
+            productos.map((item, index) => {
               return (
                 <section key={item._id}>
                   <CardBody background={key === item._id && isReedem ? isError ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>

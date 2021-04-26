@@ -45,9 +45,7 @@ export const Column = styled.div`
 
 export const Grid = styled.div`
     width:98%;
-    margin: 0px 1rem 0px 0.5rem;
-  
-    
+    margin: 2rem 1rem 0px 0.5rem;
 `;
 
 export const Principal = styled.div`

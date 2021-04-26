@@ -19,8 +19,6 @@ import {
 
 export function History() {
     const { history, isHistory } = useContext(AppContext);
-    const [listHistory, setListHistory] = useState(history);
-
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
     });
