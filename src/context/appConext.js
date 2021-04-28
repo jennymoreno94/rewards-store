@@ -10,6 +10,11 @@ export function AppProvider({ children }) {
     const [isHistory, setIsHistory] = useState(false);
     const [user, setUser] = useState([]);
 
+    const [filters, setFilters] = useState({
+        category: "todos",
+        order:0
+    });
+
     useEffect(() => {
         return getData.getProducts()
             .then(response => {
@@ -54,7 +59,9 @@ export function AppProvider({ children }) {
                 setIsHistory,
                 setProductsList,
                 filtersList,
-                setFiltersList
+                setFiltersList,
+                filters,
+                setFilters
             }}>
             {children}
         </AppContext.Provider>

@@ -18,10 +18,8 @@ import arrowRight from '../../assets/arrow-right.svg'
 import { Card } from '../card/card'
 
 export function Filter() {
-    const { productsList, isHistory, filtersList, setFiltersList } = useContext(AppContext);
-    const [key, setKey] = useState(0);
-    const [category, setCategory] = useState("");
-
+    const { productsList, isHistory, setFiltersList, filters, setFilters } = useContext(AppContext);
+    const [initialState] = useState(filters);
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
     });
@@ -34,14 +32,11 @@ export function Filter() {
 
     useEffect(() => {
         var lista = productsList
-        switch (key) {
+        switch (filters.order) {
             case 1:
-                lista = productsList;
-                break;
-            case 2:
                 lista = productsList.sort((a, b) => a.cost - b.cost);
                 break;
-            case 3:
+            case 2:
                 lista = productsList.sort((a, b) => b.cost - a.cost);
                 break;
             default:
@@ -49,25 +44,27 @@ export function Filter() {
         }
 
         lista = lista.filter(
-            (data) => ((category !== "todos" && data.category === category) ||
-                category === "todos")
+            (data) => ((filters.category !== "todos" && data.category === filters.category) ||
+                filters.category === "todos")
         );
 
         setFiltersList(lista);
-    }, [filtersList, setFiltersList]);
 
-
-    const handleFiltersButton = (key) => {
-        setKey(key)
-    }
-    const handleChange = (e) => {
-        setCategory(e.target.value)
-    };
+    }, [filters,setFiltersList]);
 
     const handlePagination = () => {
-        alert("paginación")
+        alert(JSON.stringify(filters))
     };
 
+    const handleChange = (filter, e) => {
+        const value = e.target === undefined ? e : e.target.value 
+        setFilters((filters) => {
+            return {
+                ...filters,
+                [filter]: value
+            };
+        });
+    };
 
     const propsButton = {
         height: queryMatch.matches ? "30%" : "auto",
@@ -103,8 +100,8 @@ export function Filter() {
                     <FilterTittle>16 of 32 Products <FilterVerticalLine /> <FilterGray>Sort by: </FilterGray></FilterTittle>
                     <FilterSelect
                         name="category"
-                        value={filtersList.category}
-                        onChange={(e) => handleChange(e)}
+                        value={filters.category}
+                        onChange={(e) => handleChange(e.target.name, e)}
                     >
                         <option value="todos">Todos los Productos</option>
                         {[...new Set(productsList.map((item) => item.category))].map(
@@ -113,14 +110,14 @@ export function Filter() {
                             )
                         )}
                     </FilterSelect>
-                    <Button onClick={(e) => {
-                        handleFiltersButton(1)
+                    <Button onClick={() => {
+                        setFilters(initialState);
                     }} propsButton={propsButton} tittle={"Most recent"} />
-                    <Button onClick={(e) => {
-                        handleFiltersButton(2)
+                    <Button onClick={() => {
+                        handleChange("order", 1)
                     }} propsButton={propsButton} tittle={"Lowest price"} />
-                    <Button onClick={(e) => {
-                        handleFiltersButton(3)
+                    <Button onClick={() => {
+                        handleChange("order", 2)
                     }} propsButton={propsButton} tittle={"Highest price"} />
                     <ContentPagination>
                         <Button onClick={handlePagination} propsButton={propsButtonPagination}>
