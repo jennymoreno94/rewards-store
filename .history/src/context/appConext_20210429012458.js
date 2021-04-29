@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import getData from '../utils/getMethods';
-import usePagination from '../hooks/paginationHook'
+import usePagination from '../hooks/pagination'
 import {LIMIT} from '../utils/constants'
 export const AppContext = React.createContext();
 

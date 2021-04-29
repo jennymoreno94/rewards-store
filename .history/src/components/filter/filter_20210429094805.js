@@ -16,7 +16,6 @@ import { Button } from '../transversal/buttonComponent/button'
 import arrowLeft from '../../assets/arrow-left.svg'
 import arrowRight from '../../assets/arrow-right.svg'
 import { Pagination } from '../transversal/paginationComponent/pagination'
-import {LIMIT} from '../../utils/constants'
 
 export function Filter() {
     const { productsList, isHistory, setFiltersList, filters, setFilters,pagination } = useContext(AppContext);
@@ -52,7 +51,7 @@ export function Filter() {
         );
 
         setFiltersList(lista);
-        if(lista.length <= LIMIT){
+        if(lista.length <= 16){
             pagination.setCurrentPage(1)
         }
         

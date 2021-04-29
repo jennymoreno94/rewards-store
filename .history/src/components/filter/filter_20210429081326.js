@@ -15,8 +15,6 @@ import {
 import { Button } from '../transversal/buttonComponent/button'
 import arrowLeft from '../../assets/arrow-left.svg'
 import arrowRight from '../../assets/arrow-right.svg'
-import { Pagination } from '../transversal/paginationComponent/pagination'
-import {LIMIT} from '../../utils/constants'
 
 export function Filter() {
     const { productsList, isHistory, setFiltersList, filters, setFilters,pagination } = useContext(AppContext);
@@ -52,13 +50,14 @@ export function Filter() {
         );
 
         setFiltersList(lista);
-        if(lista.length <= LIMIT){
-            pagination.setCurrentPage(1)
-        }
         
 
     }, [filters,setFiltersList]);
  
+    const handlePagination = () => {
+        alert(JSON.stringify(filters))
+    };
+
     const handleChange = (filter, e) => {
         const value = e.target === undefined ? e : e.target.value 
         setFilters((filters) => {
@@ -100,7 +99,7 @@ export function Filter() {
         <FilterWrapper>
             {isHistory ? null :
                 <FilterBody>
-                    <FilterTittle>{`${pagination.currentPage} of ${pagination.maxPage}`} <FilterVerticalLine /> <FilterGray>Sort by: </FilterGray></FilterTittle>
+                    <FilterTittle>{`${pagination.currentPage} of 32 ${pagination.maxPage}`} <FilterVerticalLine /> <FilterGray>Sort by: </FilterGray></FilterTittle>
                     <FilterSelect
                         name="category"
                         value={filters.category}
@@ -122,15 +121,14 @@ export function Filter() {
                     <Button onClick={() => {
                         handleChange("order", 2)
                     }} propsButton={propsButton} tittle={"Highest price"} />
-                    <Pagination/>
-                    {/*<ContentPagination>
+                    <ContentPagination>
                         <Button disabled={pagination.currentPage <= 1} onClick={() => {pagination.prevPage()}} propsButton={propsButtonPagination}>
                             <ImagePaginacion src={arrowLeft} alt="arrowLeft" />
                         </Button>
                         <Button disabled={pagination.currentPage >= pagination.maxPage} onClick={() => {pagination.nextPage()}} propsButton={propsButtonPagination}>
                             <ImagePaginacion src={arrowRight} alt="arrowRight" />
                         </Button>
-                    </ContentPagination>*/}
+                    </ContentPagination>
                 </FilterBody>}
             <FilterLine />
         </FilterWrapper >

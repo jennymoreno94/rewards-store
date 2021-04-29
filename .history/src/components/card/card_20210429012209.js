@@ -31,7 +31,7 @@ import { Modal } from '../modal/modal'
 import smile from '../../assets/smiley.svg'
 import sad from '../../assets/sad.svg'
 import postData from '../../utils/postMethods';
-import usePagination from '../../hooks/paginationHook'
+import usePagination from '../../hooks/pagination'
 
 export function Card() {
   const { user,isHistory,pagination } = useContext(AppContext);

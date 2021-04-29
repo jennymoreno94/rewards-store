@@ -52,7 +52,7 @@ export function Filter() {
         );
 
         setFiltersList(lista);
-        if(lista.length <= LIMIT){
+        if(lista.length <= 16){
             pagination.setCurrentPage(1)
         }
         
