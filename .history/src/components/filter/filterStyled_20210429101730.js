@@ -102,7 +102,7 @@ export const FilterSelect = styled.select`
   color: gray;
   padding-left: 5px;
   font-size: 14px;
-  margin: 1.5rem 1rem;
+  margin: 2rem 1rem;
   option {
     color: black;
     background: white;

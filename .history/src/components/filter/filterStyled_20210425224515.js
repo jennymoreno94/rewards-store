@@ -24,8 +24,7 @@ export const FilterTittle = styled.h3`
   color: #616161;
   text-align: center;
   ${media.desktop} {
-    width: 25%;
-    margin-left: 0.5rem;
+    margin-left: 1rem;
     font-size: 24px;
     line-height: 24px;
   }
@@ -102,7 +101,7 @@ export const FilterSelect = styled.select`
   color: gray;
   padding-left: 5px;
   font-size: 14px;
-  margin: 1.5rem 1rem;
+  margin: 2rem 1rem;
   option {
     color: black;
     background: white;
