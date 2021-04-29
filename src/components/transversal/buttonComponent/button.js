@@ -7,7 +7,7 @@ import {
 export function Button(props) {
    
     return (
-        <MyButton onClick={props.onClick}
+        <MyButton disabled={props.disabled} onClick={props.onClick}
             theme={props.propsButton}
         >
             <TextButton theme={props.propsButton} >{props.tittle}</TextButton>

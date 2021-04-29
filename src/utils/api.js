@@ -5,10 +5,10 @@ export const headers = {
 }
 
 export const url = {
-    getUser:    "https://coding-challenge-api.aerolab.co/user/me",
-    postPoints: "https://coding-challenge-api.aerolab.co/user/points",
-    getHistory: "https://coding-challenge-api.aerolab.co/user/history",
-    postRedeem: "https://coding-challenge-api.aerolab.co/redeem",
+    getUser:     "https://coding-challenge-api.aerolab.co/user/me",
+    postPoints:  "https://coding-challenge-api.aerolab.co/user/points",
+    getHistory:  "https://coding-challenge-api.aerolab.co/user/history",
+    postRedeem:  "https://coding-challenge-api.aerolab.co/redeem",
     getProducts: "https://coding-challenge-api.aerolab.co/products",
 }
 

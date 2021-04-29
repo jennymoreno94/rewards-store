@@ -31,21 +31,17 @@ import { Modal } from '../modal/modal'
 import smile from '../../assets/smiley.svg'
 import sad from '../../assets/sad.svg'
 import postData from '../../utils/postMethods';
-
+import usePagination from '../../hooks/pagination'
 
 export function Card() {
-  const { user, productsList, isHistory,filtersList } = useContext(AppContext);
-
-  const [productos, setProductos] = useState([]);
-  
-  
+  const { user,isHistory,pagination } = useContext(AppContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
   const [isError, setIsError] = useState(false);
   const [message, setMessage] = useState("");
   const [key, setKey] = useState("");
   const isHovered = true;
-
+  //const {currentData,nextPage } = usePagination(Object.entries(filtersList).length === 0 ? productsList : filtersList, 16)
   const [queryMatch, setQueryMatch] = useState({
     matches: window.innerWidth > 768 ? true : false,
   });
@@ -57,10 +53,6 @@ export function Card() {
     })
   });
 
-  useEffect(() => {
-    var product = Object.entries(filtersList).length === 0 ? productsList : filtersList
-    setProductos(product)
-  },[productsList,filtersList]);
 
   const handleChange = (open, key) => {
     setIsOpenModal(open);
@@ -90,7 +82,6 @@ export function Card() {
     setIsReedem(false)
   };
 
-
   const propsButton = {
     height: "auto",
     width: "80%",
@@ -113,10 +104,10 @@ export function Card() {
 
   return (
     <>
-      { isHistory ? null:
+      { isHistory ? null :
         <CardWrapper>
-          {Object.entries(productos).length === 0 ? <h1>Sin datos</h1> :
-            productos.map((item, index) => {
+          {Object.entries(pagination.currentData).length === 0 ? <h1>Sin datos</h1> :
+            pagination.currentData.map((item, index) => {
               return (
                 <section key={item._id}>
                   <CardBody background={key === item._id && isReedem ? isError ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>

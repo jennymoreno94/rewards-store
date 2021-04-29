@@ -1,10 +1,12 @@
 import url,{ headers } from "./api"
 
+const method = "POST";
+
 const postPoints = (coins) => {
     return new Promise((resolve,reject)=> {
         fetch(url.postPoints,{
-            method: "POST",
-            headers : headers,
+            method,
+            headers,
             body: JSON.stringify({
                 'amount': coins
               })
@@ -21,8 +23,8 @@ const postRedeem = (product) => {
     debugger;
     return new Promise((resolve,reject)=> {
         fetch(url.postRedeem,{
-            method: "POST",
-            headers : headers,
+            method,
+            headers,
             body: JSON.stringify({
                 'productId': product
               })

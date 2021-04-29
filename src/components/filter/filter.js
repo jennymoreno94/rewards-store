@@ -15,14 +15,16 @@ import {
 import { Button } from '../transversal/buttonComponent/button'
 import arrowLeft from '../../assets/arrow-left.svg'
 import arrowRight from '../../assets/arrow-right.svg'
-import { Card } from '../card/card'
+import usePagination from '../../hooks/pagination'
 
 export function Filter() {
-    const { productsList, isHistory, setFiltersList, filters, setFilters } = useContext(AppContext);
+    const { productsList, isHistory, setFiltersList, filters, setFilters,pagination } = useContext(AppContext);
     const [initialState] = useState(filters);
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
     });
+    
+
     useEffect(() => {
         window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
             let matches = e.matches;
@@ -49,9 +51,10 @@ export function Filter() {
         );
 
         setFiltersList(lista);
+        
 
     }, [filters,setFiltersList]);
-
+ 
     const handlePagination = () => {
         alert(JSON.stringify(filters))
     };
@@ -120,10 +123,10 @@ export function Filter() {
                         handleChange("order", 2)
                     }} propsButton={propsButton} tittle={"Highest price"} />
                     <ContentPagination>
-                        <Button onClick={handlePagination} propsButton={propsButtonPagination}>
+                        <Button disabled={pagination.currentPage <= 1} onClick={() => {pagination.prevPage()}} propsButton={propsButtonPagination}>
                             <ImagePaginacion src={arrowLeft} alt="arrowLeft" />
                         </Button>
-                        <Button onClick={handlePagination} propsButton={propsButtonPagination}>
+                        <Button disabled={pagination.currentPage >= pagination.maxPage} onClick={() => {pagination.nextPage()}} propsButton={propsButtonPagination}>
                             <ImagePaginacion src={arrowRight} alt="arrowRight" />
                         </Button>
                     </ContentPagination>

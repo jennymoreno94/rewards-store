@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import getData from '../utils/getMethods';
-
+import usePagination from '../hooks/pagination'
+import {LIMIT} from '../utils/constants'
 export const AppContext = React.createContext();
+
+
 
 export function AppProvider({ children }) {
     const [productsList, setProductsList] = useState([]);
@@ -9,6 +12,7 @@ export function AppProvider({ children }) {
     const [history, setHistory] = useState([]);
     const [isHistory, setIsHistory] = useState(false);
     const [user, setUser] = useState([]);
+    const pagination = usePagination(Object.entries(filtersList).length === 0 ? productsList : filtersList, LIMIT)
 
     const [filters, setFilters] = useState({
         category: "todos",
@@ -61,7 +65,8 @@ export function AppProvider({ children }) {
                 filtersList,
                 setFiltersList,
                 filters,
-                setFilters
+                setFilters,
+                pagination
             }}>
             {children}
         </AppContext.Provider>

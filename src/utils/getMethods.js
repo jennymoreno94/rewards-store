@@ -1,11 +1,11 @@
 import url, { headers } from "./api"
 
-
+const method = "GET";
 const getUser = () => {
     return new Promise((resolve,reject)=> {
         fetch(url.getUser,{
-            method: "GET",
-            headers : headers
+            method,
+            headers
         })
         .then(response => resolve(response.json()))
         .catch(error => {
@@ -18,8 +18,8 @@ const getUser = () => {
 const getProducts = () => {
     return new Promise((resolve, reject) => {
         fetch(url.getProducts, {
-            method: "GET",
-            headers: headers,
+            method,
+            headers,
         })
             .then(response => resolve(response.json()))
             .catch(error => {
@@ -32,8 +32,8 @@ const getProducts = () => {
 const getHistory = () => {
     return  new Promise((resolve, reject) => {
         fetch(url.getHistory, {
-            method: "GET",
-            headers: headers,
+            method,
+            headers,
         })
         .then(response => {
             var a = response.json();
@@ -49,22 +49,6 @@ const getHistory = () => {
     })
 }
 
-
-
-/*async function getHistory () {
-    try{
-        const response = await fetch(url.getHistory,{
-            method:"GET",
-            headers
-        })
-        debugger;
-        const data = await response.json()
-        return data 
-
-    }catch(error){
-        console.log('Fetch Error', error)
-    }
-}*/
 
 const getData = {
     getUser,
