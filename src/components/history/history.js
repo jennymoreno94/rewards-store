@@ -18,7 +18,7 @@ import {
 
 
 export function History() {
-    const { history, isHistory } = useContext(AppContext);
+    const { history, isHistory,pagination } = useContext(AppContext);
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
     });
@@ -43,7 +43,7 @@ export function History() {
                         </Row>
 
 
-                        {history.map((item, index) => {
+                        {pagination.currentData.map((item, index) => {
                             return (
                                 <Principal key={index}>
                                     <Row >

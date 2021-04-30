@@ -4,7 +4,7 @@ import { Card } from "./components/card/card";
 import { Filter } from "./components/filter/filter";
 import { History } from "./components/history/history";
 import { AppProvider,AppContext} from "./context/appConext";
-
+import {Pagination} from './components/transversal/paginationComponent/pagination'
 
 function App() {
   //const { isHistory} = useContext(AppContext);
@@ -16,6 +16,7 @@ function App() {
         <Filter />
         <Card /> 
         <History/>  
+        <Pagination/>
       </AppProvider>
 
     </div>
