@@ -58,7 +58,7 @@ export function History() {
                         })}
                     </Grid> :
                     <CardWrapper>
-                        {history.map((item, index) => {
+                        {pagination.currentData.map((item, index) => {
                             return (
                                 <CardBody>
                                     <CardImageDiv>

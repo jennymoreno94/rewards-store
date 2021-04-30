@@ -100,7 +100,7 @@ export function Filter() {
         <FilterWrapper>
             {isHistory ? null :
                 <FilterBody>
-                    <FilterTittle>{`${pagination.currentPage} of ${pagination.maxPage}`} <FilterVerticalLine /> <FilterGray>Sort by: </FilterGray></FilterTittle>
+                    <FilterTittle>{`Page ${pagination.currentPage} of ${pagination.maxPage}`} <FilterVerticalLine /> <FilterGray>Sort by: </FilterGray></FilterTittle>
                     <FilterSelect
                         name="category"
                         value={filters.category}
