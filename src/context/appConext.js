@@ -43,7 +43,7 @@ export function AppProvider({ children }) {
                     if (resultado !== -1) {
                         index = resultado;
                     } else {
-                        if (index >= 2) {
+                        if (index >= 1) {
                             index =  accumulator.length;
                         } 
                     }
@@ -53,7 +53,6 @@ export function AppProvider({ children }) {
                      
                     return accumulator;
                 }, []);
-
 
                 setHistory(agruparProductos);
             });
