@@ -18,6 +18,9 @@ export const MyButton = styled.button`
    outline: none;
    cursor: ${props => props.theme.cursor};
    //cursor: pointer
+   &:hover{
+     background-color: ${props => props.theme.colorHovered}; //#15dbff
+  }
 `;
 
 export const TextButton = styled.p`

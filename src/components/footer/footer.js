@@ -3,8 +3,6 @@ import { AppContext } from '../../context/appConext';
 import {
     FooterWrapper,
     FooterTittle,
-    FooterVerticalLine,
-
     FooterBody,
     FooterDivTittle
 } from '../footer/footerStyled'
@@ -15,14 +13,15 @@ export function Footer() {
     const { pagination } = useContext(AppContext);
 
     return (
-
-        <FooterWrapper>
-            <FooterBody>
-                <FooterDivTittle>
-                    <FooterTittle>{`Page ${pagination.currentPage} of ${pagination.maxPage}`} <FooterVerticalLine /></FooterTittle>
-                </FooterDivTittle>
-                <Pagination />
-            </FooterBody>
-        </FooterWrapper >
+        <section>
+            <FooterWrapper>
+                <FooterBody>
+                    <FooterDivTittle>
+                        <FooterTittle>{`Page ${pagination.currentPage} of ${pagination.maxPage}`}</FooterTittle>
+                    </FooterDivTittle>
+                    <Pagination />
+                </FooterBody>
+            </FooterWrapper >
+        </section>
     )
 }

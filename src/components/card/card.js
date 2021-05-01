@@ -94,6 +94,7 @@ export function Card() {
     color: "#616161",
     marginText: queryMatch.matches ? "1.2rem 0 1.2rem 1rem" : "1.5rem 0 1.5rem 4rem",
     paddingText: queryMatch.matches ? "0 0 0 3rem" : "0 0 0 0.5rem",
+    colorHovered: "#15dbff"
   }
 
   const propsModal = {
@@ -118,7 +119,7 @@ export function Card() {
                         </CardImageDiv>
                         <CardTittleH3 textAlign="center" color="#f0faff">{isError ? "Error!" : "Success!"}</CardTittleH3>
                         <CardTittleH4 textAlign="center" color="#f0faff">{message}</CardTittleH4>
-                        <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: isError ? "#bf0000" : "#009a00", }} tittle={isError ? "TRY AGAIN" : "CONTINUE"}></Button>
+                        <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: isError ? "#bf0000" : "#009a00",colorHovered:"#fbfbfb" }} tittle={isError ? "TRY AGAIN" : "CONTINUE"}></Button>
                       </div>
                       :
                       <div>
@@ -162,7 +163,7 @@ export function Card() {
                             </CardDivIcon>
                             <CardBuy>
                               <CardTextBuy>{item.cost}<CardImageCoin style={{ width: "36px", height: "36px" }} src={coin} alt="Coin" /></CardTextBuy>
-                              {isHovered && (user.points > item.cost) ? <Button onClick={() => { handleChange(true, item._id) }} propsButton={propsButton} tittle={"Reedem now"}></Button> : null}
+                              {isHovered && (user.points > item.cost) ? <Button onClick={() => { handleChange(true, item._id) }} propsButton={{...propsButton,colorHovered:"#fbfbfb"}} tittle={"Reedem now"}></Button> : null}
                               {/*<ButtonBuy onClick={() => { alert("hola") }}>Reedem now</ButtonBuy>*/}
                             </CardBuy>
                           </CardOverlay> : null}

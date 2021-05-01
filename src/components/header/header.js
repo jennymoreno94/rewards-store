@@ -1,5 +1,5 @@
-import React, { useState, useEffect,useContext } from "react";
-import {AppContext} from '../../context/appConext';
+import React, { useState, useEffect, useContext } from "react";
+import { AppContext } from '../../context/appConext';
 import {
     HeaderWrapper,
     HeaderImage,
@@ -17,13 +17,13 @@ import logo from '../../assets/aerolab-logo.svg'
 import coin from '../../assets/coin.svg'
 import { Modal } from '../modal/modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle, faHistory,faHome } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle, faHistory, faHome } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../transversal/buttonComponent/button'
-import  postData from '../../utils/postMethods';
-
+import postData from '../../utils/postMethods';
+import swal from 'sweetalert';
 
 export function Header() {
-    const { user,setIsHistory,isHistory} = useContext(AppContext);
+    const { user, setIsHistory, isHistory } = useContext(AppContext);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
@@ -33,14 +33,15 @@ export function Header() {
         height: queryMatch.matches ? "40px" : "30px",
         backgroundColor: queryMatch.matches ? "#e9e7e7" : "#ffffff",
         padding: "0.2rem",
-        borderRadius: "1rem",           
+        borderRadius: "1rem",
         margin: "0 0 0 0.2rem",
         cursor: "pointer",
         fontFamily: "'Source Sans Pro', sans-serif",
-        fontSize : queryMatch.matches ? "25px" :"20px",
-        marginText : "0 auto",
+        fontSize: queryMatch.matches ? "25px" : "20px",
+        marginText: "0 auto",
         paddingText: "0 0 0 0.5rem",
-        lineHeight: queryMatch.matches ? "2rem" : "1.314rem"
+        lineHeight: queryMatch.matches ? "2rem" : "1.314rem",
+        colorHovered: "#15dbff"
     }
 
     const propsModal = {
@@ -66,49 +67,58 @@ export function Header() {
     };
 
     const handleAddCoins = (coins) => {
-        return postData.postPoints(coins);  
+        postData.postPoints(coins).then(function (myJson) {
+            setIsOpenModal(false)
+            return swal(
+                'Good job!',
+                `${myJson.message}`,
+                'success'
+              )
+        });   
     };
-
-
+    
     return (
-        <HeaderWrapper>
-            <HeaderLogo>
-                <ImageLogo src={logo} alt="Logo" />
-                <Modal
-                    isOpenModal={isOpenModal}
-                    setIsOpenModal={setIsOpenModal}
-                    tittle={`Add Coins`}
-                    propsModal={propsModal}
-                >
-                    <Button onClick={() => {handleAddCoins(1000)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8" }} tittle={"1000"}>
-                        <ImageCoin src={coin} alt="Coin" />
-                    </Button>
-                    <Button onClick={() => {handleAddCoins(5000)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8" }} tittle={"5000"}>
-                        <ImageCoin src={coin} alt="Coin" />
-                    </Button>
-                    <Button onClick={() => {handleAddCoins(7500)}} propsButton={{...propsButton, backgroundColor: "#e9e8e8"}} tittle={"7500"}>
-                        <ImageCoin src={coin} alt="Coin" />
-                    </Button>
+        <section>
+            <HeaderWrapper>
+                <HeaderLogo>
+                    <ImageLogo src={logo} alt="Logo" />
+                    <Modal
+                        isOpenModal={isOpenModal}
+                        setIsOpenModal={setIsOpenModal}
+                        tittle={`Add Coins`}
+                        propsModal={propsModal}
+                    >
+                        <Button onClick={() => { handleAddCoins(1000) }} propsButton={{ ...propsButton, backgroundColor: "#e9e8e8" }} tittle={"1000"}>
+                            <ImageCoin src={coin} alt="Coin" />
+                        </Button>
+                        <Button onClick={() => { handleAddCoins(5000) }} propsButton={{ ...propsButton, backgroundColor: "#e9e8e8" }} tittle={"5000"}>
+                            <ImageCoin src={coin} alt="Coin" />
+                        </Button>
+                        <Button onClick={() => { handleAddCoins(7500) }} propsButton={{ ...propsButton, backgroundColor: "#e9e8e8" }} tittle={"7500"}>
+                            <ImageCoin src={coin} alt="Coin" />
+                        </Button>
 
-                </Modal>
-                <HeaderDiv>
-                    <Button propsButton={propsButton}
-                        onClick={handleChange} tittle={queryMatch.matches ? "AddCoins" : null}>
-                        <FontAwesomeIcon icon={faPlusCircle} style={{ color: "#FFCF00", fontSize: "25px", padding: "0.2rem" }} />
-                    </Button>
-                    <Button propsButton={propsButton}
-                        onClick={handleHistory} tittle={queryMatch.matches ? isHistory ? "Home" : "History": null}>
-                        <FontAwesomeIcon icon={isHistory ? faHome :faHistory} style={{ color: "#FF8000", fontSize: "25px", padding: "0.2rem" }} />
-                    </Button>
-                    <UserName> {user.name} </UserName>
-                    <Button propsButton={{ ...propsButton, backgroundColor: "#e9e7e7", cursor: "auto" }} tittle={user.points}>
-                        <ImageCoin src={coin} alt="Coin" />
-                    </Button>
-                </HeaderDiv>
-            </HeaderLogo>
-            <HeaderImage>
-                <HeaderTitle> Electronics</HeaderTitle>
-            </HeaderImage>
-        </HeaderWrapper>
+                    </Modal>
+                    <HeaderDiv>
+                        <Button propsButton={propsButton}
+                            onClick={handleChange} tittle={queryMatch.matches ? "AddCoins" : null}>
+                            <FontAwesomeIcon icon={faPlusCircle} style={{ color: "#FFCF00", fontSize: "25px", padding: "0.2rem" }} />
+                        </Button>
+                        <Button propsButton={propsButton}
+                            onClick={handleHistory} tittle={queryMatch.matches ? isHistory ? "Home" : "History" : null}>
+                            <FontAwesomeIcon icon={isHistory ? faHome : faHistory} style={{ color: "#FF8000", fontSize: "25px", padding: "0.2rem" }} />
+                        </Button>
+                        <UserName> {user.name} </UserName>
+                        <Button propsButton={{ ...propsButton, colorHovered: "#e9e7e7", backgroundColor: "#e9e7e7", cursor: "auto" }} tittle={user.points}>
+                            <ImageCoin src={coin} alt="Coin" />
+                        </Button>
+                    </HeaderDiv>
+                </HeaderLogo>
+                <HeaderImage>
+                    <HeaderTitle> {isHistory ? `History` : `Electronics`}</HeaderTitle>
+                </HeaderImage>
+            </HeaderWrapper>
+        </section>
+
     )
 }

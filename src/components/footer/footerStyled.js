@@ -13,19 +13,11 @@ export const FooterTittle = styled.h3`
   color: #616161;
   text-align: center;
   ${media.desktop} {
-    width: 25%;
+    width: 15%;
     margin-left: 0.5rem;
     font-size: 24px;
     line-height: 24px;
   }
-`;
-
-export const FooterVerticalLine = styled.span`
-  margin: 0 0.3rem;
-  border:thin solid #d9d9d9;
-  ${media.desktop} {
-    
-  } 
 `;
 
 export const FooterBody = styled.div`

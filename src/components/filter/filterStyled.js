@@ -24,7 +24,7 @@ export const FilterTittle = styled.h3`
   color: #616161;
   text-align: center;
   ${media.desktop} {
-    width: 25%;
+    width: 40%;
     margin-left: 0.5rem;
     font-size: 24px;
     line-height: 24px;

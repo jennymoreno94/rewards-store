@@ -16,15 +16,15 @@ import { Button } from '../transversal/buttonComponent/button'
 import arrowLeft from '../../assets/arrow-left.svg'
 import arrowRight from '../../assets/arrow-right.svg'
 import { Pagination } from '../transversal/paginationComponent/pagination'
-import {LIMIT} from '../../utils/constants'
+import { LIMIT } from '../../utils/constants'
 
 export function Filter() {
-    const { productsList, isHistory, setFiltersList, filters, setFilters,pagination } = useContext(AppContext);
+    const { productsList, isHistory, setFiltersList, filters, setFilters, pagination } = useContext(AppContext);
     const [initialState] = useState(filters);
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
     });
-    
+
 
     useEffect(() => {
         window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
@@ -52,15 +52,15 @@ export function Filter() {
         );
 
         setFiltersList(lista);
-        if(lista.length <= LIMIT){
+        if (lista.length <= LIMIT) {
             pagination.setCurrentPage(1)
         }
-        
 
-    }, [filters,setFiltersList]);
- 
+
+    }, [filters, setFiltersList]);
+
     const handleChange = (filter, e) => {
-        const value = e.target === undefined ? e : e.target.value 
+        const value = e.target === undefined ? e : e.target.value
         setFilters((filters) => {
             return {
                 ...filters,
@@ -80,7 +80,8 @@ export function Filter() {
         fontFamily: "'Source Sans Pro', sans-serif",
         fontSize: "18px",
         color: "#616161",
-        marginText: queryMatch.matches ? "1.2rem 0 1.2rem 1rem" : "1.5rem 0 1.5rem 4rem"
+        marginText: queryMatch.matches ? "1.2rem 0 1.2rem 1rem" : "1.5rem 0 1.5rem 4rem",
+        colorHovered: "#15dbff"
         //paddingText: queryMatch.matches ?  null : "1.5rem 0 1.5rem 0.5rem",
     }
 
@@ -96,34 +97,34 @@ export function Filter() {
     }
 
     return (
-
-        <FilterWrapper>
-            {isHistory ? null :
-                <FilterBody>
-                    <FilterTittle>{`Page ${pagination.currentPage} of ${pagination.maxPage}`} <FilterVerticalLine /> <FilterGray>Sort by: </FilterGray></FilterTittle>
-                    <FilterSelect
-                        name="category"
-                        value={filters.category}
-                        onChange={(e) => handleChange(e.target.name, e)}
-                    >
-                        <option value="todos">Todos los Productos</option>
-                        {[...new Set(productsList.map((item) => item.category))].map(
-                            (element) => (
-                                <option key={element}>{element}</option>
-                            )
-                        )}
-                    </FilterSelect>
-                    <Button onClick={() => {
-                        setFilters(initialState);
-                    }} propsButton={propsButton} tittle={"Most recent"} />
-                    <Button onClick={() => {
-                        handleChange("order", 1)
-                    }} propsButton={propsButton} tittle={"Lowest price"} />
-                    <Button onClick={() => {
-                        handleChange("order", 2)
-                    }} propsButton={propsButton} tittle={"Highest price"} />
-                    <Pagination/>
-                    {/*<ContentPagination>
+        <section>
+            <FilterWrapper>
+                {isHistory ? null :
+                    <FilterBody>
+                        <FilterTittle>{`Page ${pagination.currentPage} of ${pagination.maxPage}`} <FilterVerticalLine /> <FilterGray>Sort by: </FilterGray></FilterTittle>
+                        <FilterSelect
+                            name="category"
+                            value={filters.category}
+                            onChange={(e) => handleChange(e.target.name, e)}
+                        >
+                            <option value="todos">Todos los Productos</option>
+                            {[...new Set(productsList.map((item) => item.category))].map(
+                                (element) => (
+                                    <option key={element}>{element}</option>
+                                )
+                            )}
+                        </FilterSelect>
+                        <Button onClick={() => {
+                            setFilters(initialState);
+                        }} propsButton={propsButton} tittle={"Most recent"} />
+                        <Button onClick={() => {
+                            handleChange("order", 1)
+                        }} propsButton={propsButton} tittle={"Lowest price"} />
+                        <Button onClick={() => {
+                            handleChange("order", 2)
+                        }} propsButton={propsButton} tittle={"Highest price"} />
+                        <Pagination />
+                        {/*<ContentPagination>
                         <Button disabled={pagination.currentPage <= 1} onClick={() => {pagination.prevPage()}} propsButton={propsButtonPagination}>
                             <ImagePaginacion src={arrowLeft} alt="arrowLeft" />
                         </Button>
@@ -131,8 +132,10 @@ export function Filter() {
                             <ImagePaginacion src={arrowRight} alt="arrowRight" />
                         </Button>
                     </ContentPagination>*/}
-                </FilterBody>}
-            <FilterLine />
-        </FilterWrapper >
+                    </FilterBody>}
+                <FilterLine />
+            </FilterWrapper >
+        </section>
+
     )
 }
