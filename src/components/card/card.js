@@ -22,26 +22,24 @@ import {
   CardMessageConfirmation,
   CardImageMessageConfirmation
 } from '../card/cardStyled'
-import acer from '../../assets/product-pics/AcerAspire-x1.png'
-import iconblue from '../../assets/buy-blue.svg'
-import iconwhite from '../../assets/buy-white.svg'
 import coin from '../../assets/coin.svg'
 import { Button } from '../transversal/buttonComponent/button'
 import { Modal } from '../modal/modal'
 import smile from '../../assets/smiley.svg'
 import sad from '../../assets/sad.svg'
 import postData from '../../utils/postMethods';
-import usePagination from '../../hooks/paginationHook'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+
 
 export function Card() {
-  const { user,isHistory,pagination } = useContext(AppContext);
+  const { user, isHistory, pagination } = useContext(AppContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
   const [isError, setIsError] = useState(false);
   const [message, setMessage] = useState("");
   const [key, setKey] = useState("");
-  const isHovered = true;
-  //const {currentData,nextPage } = usePagination(Object.entries(filtersList).length === 0 ? productsList : filtersList, 16)
+  const [isHovered, setIsHovered] = useState(false);
   const [queryMatch, setQueryMatch] = useState({
     matches: window.innerWidth > 768 ? true : false,
   });
@@ -111,7 +109,10 @@ export function Card() {
             pagination.currentData.map((item, index) => {
               return (
                 <section key={item._id}>
-                  <CardBody background={key === item._id && isReedem ? isError ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
+                  <CardBody
+                    onMouseOver={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    background={key === item._id && isReedem ? isError ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
                     {key === item._id && isReedem ?
                       <div>
                         <CardImageDiv>
@@ -119,13 +120,21 @@ export function Card() {
                         </CardImageDiv>
                         <CardTittleH3 textAlign="center" color="#f0faff">{isError ? "Error!" : "Success!"}</CardTittleH3>
                         <CardTittleH4 textAlign="center" color="#f0faff">{message}</CardTittleH4>
-                        <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: isError ? "#bf0000" : "#009a00",colorHovered:"#fbfbfb" }} tittle={isError ? "TRY AGAIN" : "CONTINUE"}></Button>
+                        <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: isError ? "#bf0000" : "#009a00", colorHovered: "#fbfbfb" }} tittle={isError ? "TRY AGAIN" : "CONTINUE"}></Button>
                       </div>
                       :
                       <div>
                         <CardDivIcon>
+
                           {(user.points > item.cost) ?
-                            isHovered ? <div style={{ margin: "2.3rem" }} /> : <CardIcon src={iconblue} /> :
+                            <FontAwesomeIcon icon={faShoppingBag} style={{
+                              backgroundColor: "#0AD4FA",
+                              color: "#FFFFFF",
+                              fontSize: "25px",
+                              borderRadius: "50%",
+                              padding: "0.5rem",
+                              margin: "1rem"
+                            }} /> :
                             <CardNeed>You need {item.cost - user.points} <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
                           }
                         </CardDivIcon>
@@ -156,15 +165,20 @@ export function Card() {
 
                             <CardDivIcon>
                               {(user.points > item.cost) ?
-                                <CardIcon src={iconwhite} /> :
+                                <FontAwesomeIcon icon={faShoppingBag} style={{
+                                  backgroundColor: "#FFFFFF",
+                                  color: "#0AD4FA",
+                                  fontSize: "25px",
+                                  borderRadius: "50%",
+                                  padding: "0.5rem",
+                                  margin: "1rem"
+                                }} /> :
                                 <CardNeed style={{ opacity: "1", background: "#fbfbfb", color: "#616161" }}>You need {item.cost - user.points} <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
                               }
-                              {/*{ hovered && !dineroIncompleto ? <CardIcon src={iconwhite}/> :  <CardNeed style={{opacity: "1",background:"#fbfbfb",color:"#616161"}}>You need 1000 <CardImageCoin src={coin} alt="Coin" /> </CardNeed>   }*/}
                             </CardDivIcon>
                             <CardBuy>
                               <CardTextBuy>{item.cost}<CardImageCoin style={{ width: "36px", height: "36px" }} src={coin} alt="Coin" /></CardTextBuy>
-                              {isHovered && (user.points > item.cost) ? <Button onClick={() => { handleChange(true, item._id) }} propsButton={{...propsButton,colorHovered:"#fbfbfb"}} tittle={"Reedem now"}></Button> : null}
-                              {/*<ButtonBuy onClick={() => { alert("hola") }}>Reedem now</ButtonBuy>*/}
+                              {isHovered && (user.points > item.cost) ? <Button onClick={() => { handleChange(true, item._id) }} propsButton={{ ...propsButton, colorHovered: "#fbfbfb" }} tittle={"Reedem now"}></Button> : null}
                             </CardBuy>
                           </CardOverlay> : null}
                       </div>
