@@ -6,21 +6,17 @@ import {
   CardTittleH3,
   CardTittleH4,
   CardImage,
-  CardIcon,
   CardDivIcon,
   CardLine,
   CardNeed,
   CardImageCoin,
   CardImageDiv,
   CardOverlay,
-  ButtonBuy,
   CardBuy,
   CardTextBuy,
   CardConfirmation,
   CardTextConfirmation,
   CardButtonConfirmation,
-  CardMessageConfirmation,
-  CardImageMessageConfirmation
 } from '../card/cardStyled'
 import coin from '../../assets/coin.svg'
 import { Button } from '../transversal/buttonComponent/button'
@@ -141,7 +137,7 @@ export function Card() {
                               padding: "0.5rem",
                               margin: "1rem"
                             }} /> :
-                            <CardNeed>You need {item.cost - user.points} <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
+                            <CardNeed>You need {item.cost - user.points} <CardImageCoin src={coin} /> </CardNeed>
                           }
                         </CardDivIcon>
                         <CardImageDiv>
@@ -179,11 +175,11 @@ export function Card() {
                                   padding: "0.5rem",
                                   margin: "1rem"
                                 }} /> :
-                                <CardNeed style={{ opacity: "1", background: "#fbfbfb", color: "#616161" }}>You need {item.cost - user.points} <CardImageCoin src={coin} alt="Coin" /> </CardNeed>
+                                <CardNeed style={{ opacity: "1", background: "#fbfbfb", color: "#616161" }}>You need {item.cost - user.points} <CardImageCoin src={coin}  /> </CardNeed>
                               }
                             </CardDivIcon>
                             <CardBuy>
-                              <CardTextBuy>{item.cost}<CardImageCoin style={{ width: "36px", height: "36px" }} src={coin} alt="Coin" /></CardTextBuy>
+                              <CardTextBuy>{item.cost}<CardImageCoin style={{ width: "36px", height: "36px" }} src={coin} /></CardTextBuy>
                               {isHovered && (user.points > item.cost) ? <Button onClick={() => { handleChange(true, item._id) }} propsButton={{ ...propsButton, colorHovered: "#fbfbfb" }} tittle={"Reedem now"}></Button> : null}
                             </CardBuy>
                           </CardOverlay> : null}

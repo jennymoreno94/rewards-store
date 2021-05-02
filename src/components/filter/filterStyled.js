@@ -48,50 +48,11 @@ export const FilterGray = styled.span`
   }
 `;
 
-export const FilterButton = styled.button`
-  font-family:'Source Sans Pro', sans-serif;
-   width:100%;
-   height:auto;
-   margin: 0.3rem 1rem 0.3rem 0;
-   border: none;
-   border-radius: 2rem;
-   outline: none;
-   cursor: pointer;  
-   background:#ededed;  
-   font-size:18px;
-   color:#616161;
-   
-   
-   padding: 1rem 0;
-   ${media.desktop} {
-      width:15%;
-      height:63px;
-    }
-`
-
 export const FilterLine = styled.hr`
   margin: 0rem 1.5rem;
   height: 1px;
   background-color: #dcdcdc;
   border: none; 
-`;
-
-export const ImagePaginacion = styled.img`
-  width: 40px;
-  height: 40px; 
-   ${media.desktop} {
-        padding: 0.1rem;
-    }
-`;
-
-export const ContentPagination = styled.div`
-    display: flex;
-    justify-content: space-between;
-    padding: 0.1rem;
-    flex-direction:row;
-    ${media.desktop} {
-      margin-left: 10rem;
-    }
 `;
 
 export const FilterSelect = styled.select`

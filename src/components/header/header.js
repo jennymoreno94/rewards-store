@@ -8,10 +8,7 @@ import {
     HeaderDiv,
     ImageLogo,
     ImageCoin,
-    ButtonCoin,
-    TextButtonCoin,
-    UserName,
-    TextButton
+    UserName
 } from "../header/headerStyled";
 import logo from '../../assets/aerolab-logo.svg'
 import coin from '../../assets/coin.svg'

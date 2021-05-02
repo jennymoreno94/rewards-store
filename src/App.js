@@ -1,4 +1,4 @@
-import React, {useContext } from "react";
+import React from "react";
 import { Header} from "./components/header/header";
 import { Card } from "./components/card/card";
 import { Filter } from "./components/filter/filter";
@@ -7,8 +7,7 @@ import {Footer} from './components/footer/footer'
 import { AppProvider} from "./context/appConext";
 
 function App() {
-  //const { isHistory} = useContext(AppContext);
-  
+
   return (
     <div>
       <AppProvider>

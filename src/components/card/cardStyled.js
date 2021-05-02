@@ -39,7 +39,9 @@ export const CardImageDiv = styled.div`
    width: 100%;
 `;
 
-export const CardImage = styled.img`
+export const CardImage = styled.img.attrs({
+  alt: 'cardImage',
+})`
   display: block;
   width: ${props => props.widthImage ? props.widthImage : "100%"};
   height: ${props => props.heightImage ? props.widthImage : "auto"};
@@ -57,10 +59,6 @@ export const CardDivIcon = styled.div`
   flex-direction:row-reverse;
 `;
 
-export const CardIcon = styled.img`
-  margin:1rem;
-`;
-
 export const CardNeed = styled.div`
   opacity:0.6;
   background:#616161;
@@ -76,7 +74,9 @@ export const CardNeed = styled.div`
   color:#ffffff;
 `;
 
-export const CardImageCoin = styled.img`
+export const CardImageCoin = styled.img.attrs({
+  alt: 'coin',
+})`
   width: 25px;
   height: 25px;
   vertical-align:middle;
@@ -95,22 +95,6 @@ export const CardTittleH4 = styled.h4`
   text-align:${props => props.textAlign};
   color:${props => props.color};
 `;
-
-export const ButtonBuy = styled.button`
-   font-family:'Source Sans Pro', sans-serif;
-   width:80%;
-   height:auto;
-   margin: 0rem 2rem 0rem;
-   border: none;
-   border-radius: 2rem;
-   outline: none;
-   padding:1rem;
-   cursor: pointer;  
-   background:#fbfbfb;  
-   font-size:18px;
-   color:#616161;
-   text-align:center;
-`
 
 export const CardBuy = styled.div`
   width:100%;

@@ -16,9 +16,7 @@ export const ModalDiv = styled.div`
 
 export const ModalDialog = styled.div`
     background: #fbfbfb;
-    //400px
     width:  ${props => props.theme.width};
-    //150px
     height: ${props => props.theme.height};
     border-radius:1rem;
 `;

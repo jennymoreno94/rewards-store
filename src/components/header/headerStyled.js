@@ -47,33 +47,6 @@ export const HeaderDiv = styled.div`
     }
 `
 
-export const ButtonCoin = styled.button`
-   height: 30px;
-   background-color:#f8f8f8;
-   border: none;
-   display:flex;
-   justify-content: space-between;
-   padding:0.2rem;
-   border-radius: 1rem;
-   margin-left: 0.2rem;
-   outline: none;
-   cursor: pointer;
-    ${media.desktop} {
-        height: 40px;
-    }
-`
-export const TextButtonCoin = styled.p`
-   font-family:'Source Sans Pro', sans-serif;
-   font-size:20px;
-   margin: 0 auto;
-   padding-left:0.5rem;
-   line-height: 1.314rem; 
-   ${media.desktop} {
-        font-size: 25px;
-        line-height: 2rem;
-    } 
-`
-
 export const HeaderTitle = styled.h6`
     font-family:'Source Sans Pro', sans-serif;
     font-size:20px;
@@ -112,16 +85,3 @@ export const UserName = styled.h6`
         font-size:16px;
     }
 `
-
-export const TextButton = styled.p`
-   font-family:'Source Sans Pro', sans-serif;
-   font-size:15px;
-   margin: 0 auto;
-   padding-left:0.5rem;
-   line-height: 1.314rem; 
-   ${media.desktop} {
-        font-size: 20px;
-        line-height: 2rem;
-    } 
-`
-

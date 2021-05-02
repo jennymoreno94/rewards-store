@@ -31,8 +31,6 @@ export function Pagination(props) {
         borderRadius: "100%",
         margin: "1rem",
         colorHovered: "#eceff1"
-
-        //paddingText: queryMatch.matches ?  null : "1.5rem 0 1.5rem 0.5rem",
     }
 
     return (
