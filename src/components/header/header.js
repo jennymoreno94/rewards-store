@@ -20,10 +20,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle, faHistory, faHome } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../transversal/buttonComponent/button'
 import postData from '../../utils/postMethods';
+import getData from '../../utils/getMethods';
 import swal from 'sweetalert';
 
 export function Header() {
-    const { user, setIsHistory, isHistory } = useContext(AppContext);
+    const { user, setIsHistory, isHistory, setUser } = useContext(AppContext);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
@@ -69,14 +70,19 @@ export function Header() {
     const handleAddCoins = (coins) => {
         postData.postPoints(coins).then(function (myJson) {
             setIsOpenModal(false)
-            return swal(
-                'Good job!',
-                `${myJson.message}`,
-                'success'
-              )
-        });   
+            getData.getUser()
+                .then(response => {
+                    setUser(response);
+                    return swal(
+                        'Good job!',
+                        `${myJson.message}`,
+                        'success'
+                    )
+
+                });
+        });
     };
-    
+
     return (
         <section>
             <HeaderWrapper>

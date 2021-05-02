@@ -30,10 +30,10 @@ import sad from '../../assets/sad.svg'
 import postData from '../../utils/postMethods';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
-
+import getData from '../../utils/getMethods';
 
 export function Card() {
-  const { user, isHistory, pagination } = useContext(AppContext);
+  const { user, isHistory, pagination, setUser } = useContext(AppContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -63,6 +63,11 @@ export function Card() {
       if (response.error === undefined || response.error === "") {
         setIsError(false);
         setMessage(response.message)
+        getData.getUser()
+        .then(response => {
+          setUser(response);
+        });
+  
       } else {
         setIsError(true);
         setMessage(response.error)
@@ -74,6 +79,7 @@ export function Card() {
       setIsError(true);
     });
 
+   
   };
 
   const handleConfirmationMessage = () => {

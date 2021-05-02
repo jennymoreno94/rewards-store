@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import getData from '../utils/getMethods';
 import usePagination from '../hooks/paginationHook'
-import {LIMIT} from '../utils/constants'
+import { LIMIT } from '../utils/constants'
 export const AppContext = React.createContext();
 
 
@@ -12,13 +12,13 @@ export function AppProvider({ children }) {
     const [history, setHistory] = useState([]);
     const [isHistory, setIsHistory] = useState(false);
     const [user, setUser] = useState([]);
-    const pagination = usePagination(isHistory ? history : 
+    const pagination = usePagination(isHistory ? history :
         Object.entries(filtersList).length === 0 ? productsList : filtersList, LIMIT
-        )
+    )
 
     const [filters, setFilters] = useState({
         category: "todos",
-        order:0
+        order: 0
     });
 
     useEffect(() => {
@@ -26,14 +26,14 @@ export function AppProvider({ children }) {
             .then(response => {
                 setProductsList(response)
             });
-    }, [productsList, setProductsList])
+    }, [productsList === []])
 
     useEffect(() => {
         return getData.getUser()
             .then(response => {
                 setUser(response);
             });
-    }, [user, setUser])
+    }, [user === []])
 
     useEffect(() => {
         return getData.getHistory()
@@ -44,19 +44,19 @@ export function AppProvider({ children }) {
                         index = resultado;
                     } else {
                         if (index >= 1) {
-                            index =  accumulator.length;
-                        } 
+                            index = accumulator.length;
+                        }
                     }
 
                     accumulator[index] = (accumulator[index] || { ...currentValue, cost: 0 })
                     accumulator[index].cost += currentValue.cost
-                     
+
                     return accumulator;
                 }, []);
 
                 setHistory(agruparProductos);
             });
-    }, [history, setHistory])
+    }, [isHistory])
 
 
 
