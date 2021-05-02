@@ -40,7 +40,7 @@ export const FilterVerticalLine = styled.span`
 `;
 
 export const FilterGray = styled.span`
-  color: #a3a3a3;
+  color: #908e8e;
   font-size:20px;
   ${media.desktop} {
     font-size:24px;

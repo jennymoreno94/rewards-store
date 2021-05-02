@@ -41,6 +41,8 @@ export const CardImageDiv = styled.div`
 
 export const CardImage = styled.img.attrs({
   alt: 'cardImage',
+  width:"100%",
+  height:"auto"
 })`
   display: block;
   width: ${props => props.widthImage ? props.widthImage : "100%"};
