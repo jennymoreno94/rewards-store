@@ -84,7 +84,9 @@ export function Card() {
     }).catch((error) => {
       setMessage(error)
       setIsError(true);
-    }); 
+    });
+
+   
   };
 
   const handleConfirmationMessage = () => {
@@ -163,5 +165,6 @@ export function Card() {
             })}
         </CardWrapper>
     </>
+
   );
 }

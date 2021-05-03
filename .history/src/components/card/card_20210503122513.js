@@ -84,7 +84,9 @@ export function Card() {
     }).catch((error) => {
       setMessage(error)
       setIsError(true);
-    }); 
+    });
+
+   
   };
 
   const handleConfirmationMessage = () => {
@@ -117,6 +119,7 @@ export function Card() {
                       :
                       <div>
                         <CardDivIcon>
+
                           {(user.points > item.cost) ?
                             <FontAwesomeIcon icon={faShoppingBag} style={propsShoppingBag(true)} /> :
                             <CardNeed>{ConstCard.coinNeed} {item.cost - user.points} <CardImageCoin src={coin} /> </CardNeed>
@@ -134,6 +137,7 @@ export function Card() {
                           tittle={ConstCard.tittleModal}
                           propsModal={propsModal}
                         >
+
                           <CardConfirmation>
                             <CardTextConfirmation>{ConstCard.modalText}</CardTextConfirmation>
                             <CardButtonConfirmation>
@@ -163,5 +167,6 @@ export function Card() {
             })}
         </CardWrapper>
     </>
+
   );
 }
