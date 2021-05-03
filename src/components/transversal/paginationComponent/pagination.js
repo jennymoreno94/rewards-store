@@ -9,6 +9,7 @@ import {
 import { Button } from '../buttonComponent/button'
 import arrowLeft from '../../../assets/arrow-left.svg'
 import arrowRight from '../../../assets/arrow-right.svg'
+import {MediaQuery} from '../../../utils/constants'
 
 export function Pagination() {
 
@@ -18,12 +19,12 @@ export function Pagination() {
     });
 
     useEffect(() => {
-        window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
+        window.matchMedia(MediaQuery.tablet).addEventListener("change", (e) => {
             let matches = e.matches;
             setQueryMatch({ ...queryMatch, matches })
         })
     });
-    
+
     return (
         <section>
             <ContentPagination>

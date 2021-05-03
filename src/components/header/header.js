@@ -26,7 +26,7 @@ import postData from '../../utils/postMethods';
 import getData from '../../utils/getMethods';
 import swal from 'sweetalert';
 import { useHistory } from "react-router-dom";
-import {ConstHeader} from '../../utils/constants'
+import {ConstHeader,MediaQuery} from '../../utils/constants'
 
 export function Header() {
     let history = useHistory();
@@ -39,12 +39,11 @@ export function Header() {
     const propsModal = propsGeneralModal(queryMatch.matches);
 
     useEffect(() => {
-        window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
+        window.matchMedia(MediaQuery.tablet).addEventListener("change", (e) => {
             let matches = e.matches;
             setQueryMatch({ ...queryMatch, matches })
         })
     });
-
 
     const handleChange = () => {
         setIsOpenModal(true);

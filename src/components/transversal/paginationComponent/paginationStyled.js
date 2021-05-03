@@ -22,7 +22,6 @@ export const ImagePaginacion = styled.img`
     }
 `;
 
-
 export const propsGeneralButton = {
   height: "40px",
   width: "40px",

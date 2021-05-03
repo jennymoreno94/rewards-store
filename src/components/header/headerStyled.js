@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import header from '../../assets/header-x1.png'
 
-
 const media = {
     desktop: '@media(min-width: 768px)'
 }
@@ -105,7 +104,6 @@ export const propsGeneralButton = (matches) => ({
     colorHovered: "#15dbff" 
 });
 
-
 export const propsGeneralModal = (matches) => ({
     width: matches ? "400px" : "300px",
     height: "150px",
@@ -121,7 +119,6 @@ export const propsButtonUser = {
     backgroundColor: "#e9e7e7",
     cursor: "auto"
 }
-
 
 export const propsIconButton = (coin) => ({
     color: coin ? "#FFCF00" : "#FF8000",

@@ -15,7 +15,7 @@ import {
     CardLine,
     CardImageDiv,
 } from '../card/cardStyled'
-
+import {MediaQuery} from '../../utils/constants'
 
 export function History() {
     const {pagination } = useContext(AppContext);
@@ -24,7 +24,7 @@ export function History() {
     });
 
     useEffect(() => {
-        window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
+        window.matchMedia(MediaQuery.tablet).addEventListener("change", (e) => {
             let matches = e.matches;
             setQueryMatch({ ...queryMatch, matches })
         })

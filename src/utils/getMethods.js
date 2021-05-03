@@ -49,7 +49,6 @@ const getHistory = () => {
     })
 }
 
-
 const getData = {
     getUser,
     getProducts,

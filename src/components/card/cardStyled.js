@@ -181,7 +181,6 @@ export const propsTittleConfirmation = {
   color: "#f0faff"
 }
 
-
 export const propsShoppingBag = (blue) => ({
   backgroundColor: blue ? "#0AD4FA" : "#FFFFFF",
   color:  blue ? "#FFFFFF" :"#0AD4FA",
@@ -191,13 +190,11 @@ export const propsShoppingBag = (blue) => ({
   margin: "1rem"
 })
 
-
 export const propsCardNeed = {
   opacity: "1", 
   background: "#fbfbfb", 
   color: "#616161"
 }
-
 
 export const propsCardImage = {
   widthImage: "60%", 
