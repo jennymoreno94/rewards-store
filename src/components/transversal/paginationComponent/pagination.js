@@ -10,7 +10,7 @@ import { Button } from '../buttonComponent/button'
 import arrowLeft from '../../../assets/arrow-left.svg'
 import arrowRight from '../../../assets/arrow-right.svg'
 
-export function Pagination(props) {
+export function Pagination() {
 
     const { pagination } = useContext(AppContext);
     const [queryMatch, setQueryMatch] = useState({
@@ -23,15 +23,14 @@ export function Pagination(props) {
             setQueryMatch({ ...queryMatch, matches })
         })
     });
-
-    const propsButtonPagination = propsGeneralButton(queryMatch.matches)
+    
     return (
         <section>
             <ContentPagination>
-                <Button disabled={pagination.currentPage <= 1} onClick={() => { pagination.prevPage() }} propsButton={propsButtonPagination}>
+                <Button disabled={pagination.currentPage <= 1} onClick={() => { pagination.prevPage() }} propsButton={propsGeneralButton}>
                     <ImagePaginacion src={arrowLeft} alt="arrowLeft" />
                 </Button>
-                <Button disabled={pagination.currentPage >= pagination.maxPage} onClick={() => { pagination.nextPage() }} propsButton={propsButtonPagination}>
+                <Button disabled={pagination.currentPage >= pagination.maxPage} onClick={() => { pagination.nextPage() }} propsButton={propsGeneralButton}>
                     <ImagePaginacion src={arrowRight} alt="arrowRight" />
                 </Button>
             </ContentPagination>

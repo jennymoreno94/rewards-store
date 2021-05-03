@@ -13,7 +13,8 @@ import {
     propsGeneralModal,
     propsButtonCoins,
     propsButtonUser,
-    propsIconButton
+    propsIconButton,
+    propsMenuButtons
 } from "../header/headerStyled";
 import logo from '../../assets/aerolab-logo.svg'
 import coin from '../../assets/coin.svg'
@@ -93,11 +94,11 @@ export function Header() {
 
                     </Modal>
                     <HeaderDiv>
-                        <Button propsButton={propsButton}
+                        <Button propsButton={{...propsButton,...propsMenuButtons(queryMatch.matches)}}
                             onClick={handleChange} tittle={queryMatch.matches ? ConstHeader.addCoins : null}>
                             <FontAwesomeIcon icon={faPlusCircle} style={propsIconButton(true)} />
                         </Button>
-                        <Button propsButton={propsButton}
+                        <Button propsButton={{...propsButton,...propsMenuButtons(queryMatch.matches)}}
                             onClick={handleHistory} tittle={queryMatch.matches ? isHistory ? ConstHeader.home : ConstHeader.history : null}>
                             <FontAwesomeIcon icon={isHistory ? faHome : faHistory} style={propsIconButton(false)} />
                         </Button>

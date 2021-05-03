@@ -23,12 +23,12 @@ export const ImagePaginacion = styled.img`
 `;
 
 
-export const propsGeneralButton = (matches) => ({
-  height: matches ? "40px" : "25px",
-  width: matches ? "40px" : "25px",
+export const propsGeneralButton = {
+  height: "40px",
+  width: "40px",
   backgroundColor: "#ffffff",
   padding: "0",
   borderRadius: "100%",
   margin: "1rem",
   colorHovered: "#eceff1"
-});
+};

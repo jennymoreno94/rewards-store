@@ -102,7 +102,7 @@ export const propsGeneralButton = (matches) => ({
     marginText: "0 auto",
     paddingText: "0 0 0 0.5rem",
     lineHeight: matches ? "2rem" : "1.314rem",
-    colorHovered: "#15dbff"
+    colorHovered: "#15dbff" 
 });
 
 
@@ -127,4 +127,8 @@ export const propsIconButton = (coin) => ({
     color: coin ? "#FFCF00" : "#FF8000",
     fontSize: "25px",
     padding: "0.2rem"
+})
+
+export const propsMenuButtons = (matches) => ({
+    colorHovered: matches ? "#15dbff" : "#FFFFFF" 
 })
