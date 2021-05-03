@@ -29,7 +29,7 @@ import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import getData from '../../utils/getMethods';
 
 export function Card() {
-  const { user, isHistory, pagination, setUser } = useContext(AppContext);
+  const { user, pagination, setUser } = useContext(AppContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isReedem, setIsReedem] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -105,7 +105,6 @@ export function Card() {
 
   return (
     <>
-      { isHistory ? null :
         <CardWrapper>
           {Object.entries(pagination.currentData).length === 0 ? <h1>Sin datos</h1> :
             pagination.currentData.map((item, index) => {
@@ -189,7 +188,7 @@ export function Card() {
                 </section>
               );
             })}
-        </CardWrapper>}
+        </CardWrapper>
     </>
 
   );

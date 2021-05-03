@@ -18,7 +18,7 @@ import {
 
 
 export function History() {
-    const {isHistory,pagination } = useContext(AppContext);
+    const {pagination } = useContext(AppContext);
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
     });
@@ -32,7 +32,7 @@ export function History() {
 
     return (
         <section>
-            { isHistory ?
+            { 
                 queryMatch.matches ?
                     <Grid>
                         <Row backgroungColor={"#7de1fa"}>
@@ -73,7 +73,7 @@ export function History() {
                         })}
                     </CardWrapper>
 
-                : null}
+                }
         </section>
     )
 }

@@ -19,14 +19,15 @@ import { Button } from '../transversal/buttonComponent/button'
 import postData from '../../utils/postMethods';
 import getData from '../../utils/getMethods';
 import swal from 'sweetalert';
+import {useHistory} from "react-router-dom";
 
 export function Header() {
+    let history = useHistory();
     const { user, setIsHistory, isHistory, setUser } = useContext(AppContext);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
     });
-
     const propsButton = {
         height: queryMatch.matches ? "40px" : "30px",
         backgroundColor: queryMatch.matches ? "#e9e7e7" : "#ffffff",
@@ -61,7 +62,9 @@ export function Header() {
     };
 
     const handleHistory = () => {
-        setIsHistory(!isHistory)
+        let link = !isHistory
+        history.push(link ? "/history" : "/");
+        setIsHistory(link)
     };
 
     const handleAddCoins = (coins) => {
@@ -121,7 +124,7 @@ export function Header() {
                     <HeaderTitle> {isHistory ? `History` : `Electronics`}</HeaderTitle>
                 </HeaderImage>
             </HeaderWrapper>
-        </section>
+        </section >
 
     )
 }

@@ -1,21 +1,45 @@
 import React from "react";
-import { Header} from "./components/header/header";
+import { Header } from "./components/header/header";
 import { Card } from "./components/card/card";
 import { Filter } from "./components/filter/filter";
 import { History } from "./components/history/history";
-import {Footer} from './components/footer/footer'
-import { AppProvider} from "./context/appConext";
+import { Footer } from './components/footer/footer'
+import { AppProvider } from "./context/appConext";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useLocation,
+  useParams
+} from "react-router-dom";
 
 function App() {
-
   return (
     <div>
       <AppProvider>
-        <Header />
+        {/*<Header />
         <Filter />
-        <Card /> 
-        <History/>  
-        <Footer/>
+        <Card />
+        <History />
+        <Footer />*/}
+
+
+        <Router>
+
+          <Header />
+
+
+          <Switch>
+            <Route exact path="/" >
+              <Filter />
+              <Card />
+            </Route>
+            <Route path="/history" component={History} />
+          </Switch>
+        </Router>
+        <Footer />
       </AppProvider>
 
     </div>
