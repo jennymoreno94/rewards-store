@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const media = {
-    desktop: '@media(min-width: 768px)'
-  }
+  desktop: '@media(min-width: 768px)'
+}
 
 export const ContentPagination = styled.div`
     display: flex;
@@ -21,3 +21,14 @@ export const ImagePaginacion = styled.img`
         padding: 0.1rem;
     }
 `;
+
+
+export const propsGeneralButton = (matches) => ({
+  height: matches ? "40px" : "25px",
+  width: matches ? "40px" : "25px",
+  backgroundColor: "#ffffff",
+  padding: "0",
+  borderRadius: "100%",
+  margin: "1rem",
+  colorHovered: "#eceff1"
+});

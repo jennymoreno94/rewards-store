@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import getData from '../utils/getMethods';
 import usePagination from '../hooks/paginationHook'
-import { LIMIT } from '../utils/constants'
+import { LIMIT,ConstFilter } from '../utils/constants'
 export const AppContext = React.createContext();
-
-
 
 export function AppProvider({ children }) {
     const [productsList, setProductsList] = useState([]);
@@ -17,7 +15,7 @@ export function AppProvider({ children }) {
     )
 
     const [filters, setFilters] = useState({
-        category: "todos",
+        category: ConstFilter.allCategories,
         order: 0
     });
 
@@ -57,8 +55,6 @@ export function AppProvider({ children }) {
                 setHistory(agruparProductos);
             });
     }, [isHistory])
-
-
 
     return (
         <AppContext.Provider

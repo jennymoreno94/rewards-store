@@ -12,6 +12,10 @@ export const url = {
     getProducts: "https://coding-challenge-api.aerolab.co/products",
 }
 
+
+export const get = "GET";
+export const post = "POST";
+
 export default url
 
 

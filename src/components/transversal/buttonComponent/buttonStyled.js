@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const MyButton = styled.button`
    height : ${props => props.theme.height};
    width : ${props => props.theme.width};

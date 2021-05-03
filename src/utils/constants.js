@@ -26,3 +26,17 @@ export const ConstFilter = {
     allCategories: "todos",
     order : "order"
 }
+
+export const ConstHeader = {
+    history: "History",
+    home: "Home",
+    store: "Electronics",
+    onethousand : "1000",
+    fivethousand : "5000",
+    seventhousand : "7500",
+    addCoins: "Add Coins",
+    linkHistory: "/history",
+    linkStore: "/rewards-store",
+}
+
+

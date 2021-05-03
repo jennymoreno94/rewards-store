@@ -3,7 +3,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { AppContext } from '../../../context/appConext';
 import {
     ContentPagination,
-    ImagePaginacion
+    ImagePaginacion,
+    propsGeneralButton
 } from '../paginationComponent/paginationStyled'
 import { Button } from '../buttonComponent/button'
 import arrowLeft from '../../../assets/arrow-left.svg'
@@ -23,16 +24,7 @@ export function Pagination(props) {
         })
     });
 
-    const propsButtonPagination = {
-        height: queryMatch.matches ? "40px" : "25px",
-        width: queryMatch.matches ? "40px" : "25px",
-        backgroundColor: "#ffffff",
-        padding: "0",
-        borderRadius: "100%",
-        margin: "1rem",
-        colorHovered: "#eceff1"
-    }
-
+    const propsButtonPagination = propsGeneralButton(queryMatch.matches)
     return (
         <section>
             <ContentPagination>
@@ -44,8 +36,6 @@ export function Pagination(props) {
                 </Button>
             </ContentPagination>
         </section>
-
-
     );
 }
 

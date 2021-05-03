@@ -1,6 +1,6 @@
-import url,{ headers } from "./api"
+import url,{ headers,post } from "./api"
 
-const method = "POST";
+const method = post;
 
 const postPoints = (coins) => {
     return new Promise((resolve,reject)=> {

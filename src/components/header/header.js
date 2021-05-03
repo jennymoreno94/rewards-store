@@ -8,7 +8,12 @@ import {
     HeaderDiv,
     ImageLogo,
     ImageCoin,
-    UserName
+    UserName,
+    propsGeneralButton,
+    propsGeneralModal,
+    propsButtonCoins,
+    propsButtonUser,
+    propsIconButton
 } from "../header/headerStyled";
 import logo from '../../assets/aerolab-logo.svg'
 import coin from '../../assets/coin.svg'
@@ -19,7 +24,8 @@ import { Button } from '../transversal/buttonComponent/button'
 import postData from '../../utils/postMethods';
 import getData from '../../utils/getMethods';
 import swal from 'sweetalert';
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import {ConstHeader} from '../../utils/constants'
 
 export function Header() {
     let history = useHistory();
@@ -28,26 +34,8 @@ export function Header() {
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
     });
-    const propsButton = {
-        height: queryMatch.matches ? "40px" : "30px",
-        backgroundColor: queryMatch.matches ? "#e9e7e7" : "#ffffff",
-        padding: "0.2rem",
-        borderRadius: "1rem",
-        margin: "0 0 0 0.2rem",
-        cursor: "pointer",
-        fontFamily: "'Source Sans Pro', sans-serif",
-        fontSize: queryMatch.matches ? "25px" : "20px",
-        marginText: "0 auto",
-        paddingText: "0 0 0 0.5rem",
-        lineHeight: queryMatch.matches ? "2rem" : "1.314rem",
-        colorHovered: "#15dbff"
-    }
-
-    const propsModal = {
-        width: queryMatch.matches ? "400px" : "300px",
-        height: "150px",
-        backgroundColor: "rgba(0,0,0, .85)"
-    }
+    const propsButton = propsGeneralButton(queryMatch.matches);
+    const propsModal = propsGeneralModal(queryMatch.matches);
 
     useEffect(() => {
         window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
@@ -63,7 +51,7 @@ export function Header() {
 
     const handleHistory = () => {
         let link = !isHistory
-        history.push(link ? "/history" : "/rewards-store");
+        history.push(link ? ConstHeader.linkHistory : ConstHeader.linkStore);
         setIsHistory(link)
     };
 
@@ -78,7 +66,6 @@ export function Header() {
                         `${myJson.message}`,
                         'success'
                     )
-
                 });
         });
     };
@@ -87,44 +74,43 @@ export function Header() {
         <section>
             <HeaderWrapper>
                 <HeaderLogo>
-                    <ImageLogo src={logo} alt="Logo" />
+                    <ImageLogo src={logo}/>
                     <Modal
                         isOpenModal={isOpenModal}
                         setIsOpenModal={setIsOpenModal}
-                        tittle={`Add Coins`}
+                        tittle={ConstHeader.addCoins}
                         propsModal={propsModal}
                     >
-                        <Button onClick={() => { handleAddCoins(1000) }} propsButton={{ ...propsButton, backgroundColor: "#e9e8e8" }} tittle={"1000"}>
-                            <ImageCoin src={coin} alt="Coin" />
+                        <Button onClick={() => { handleAddCoins(1000) }} propsButton={{ ...propsButton, ...propsButtonCoins }} tittle={ConstHeader.onethousand}>
+                            <ImageCoin src={coin}/>
                         </Button>
-                        <Button onClick={() => { handleAddCoins(5000) }} propsButton={{ ...propsButton, backgroundColor: "#e9e8e8" }} tittle={"5000"}>
-                            <ImageCoin src={coin} alt="Coin" />
+                        <Button onClick={() => { handleAddCoins(5000) }} propsButton={{ ...propsButton, ...propsButtonCoins }} tittle={ConstHeader.fivethousand}>
+                            <ImageCoin src={coin}/>
                         </Button>
-                        <Button onClick={() => { handleAddCoins(7500) }} propsButton={{ ...propsButton, backgroundColor: "#e9e8e8" }} tittle={"7500"}>
-                            <ImageCoin src={coin} alt="Coin" />
+                        <Button onClick={() => { handleAddCoins(7500) }} propsButton={{ ...propsButton, ...propsButtonCoins }} tittle={ConstHeader.seventhousand}>
+                            <ImageCoin src={coin}/>
                         </Button>
 
                     </Modal>
                     <HeaderDiv>
                         <Button propsButton={propsButton}
-                            onClick={handleChange} tittle={queryMatch.matches ? "AddCoins" : null}>
-                            <FontAwesomeIcon icon={faPlusCircle} style={{ color: "#FFCF00", fontSize: "25px", padding: "0.2rem" }} />
+                            onClick={handleChange} tittle={queryMatch.matches ? ConstHeader.addCoins : null}>
+                            <FontAwesomeIcon icon={faPlusCircle} style={propsIconButton(true)} />
                         </Button>
                         <Button propsButton={propsButton}
-                            onClick={handleHistory} tittle={queryMatch.matches ? isHistory ? "Home" : "History" : null}>
-                            <FontAwesomeIcon icon={isHistory ? faHome : faHistory} style={{ color: "#FF8000", fontSize: "25px", padding: "0.2rem" }} />
+                            onClick={handleHistory} tittle={queryMatch.matches ? isHistory ? ConstHeader.home : ConstHeader.history : null}>
+                            <FontAwesomeIcon icon={isHistory ? faHome : faHistory} style={propsIconButton(false)} />
                         </Button>
                         <UserName> {user.name} </UserName>
-                        <Button propsButton={{ ...propsButton, colorHovered: "#e9e7e7", backgroundColor: "#e9e7e7", cursor: "auto" }} tittle={user.points}>
-                            <ImageCoin src={coin} alt="Coin" />
+                        <Button propsButton={{ ...propsButton, ...propsButtonUser}} tittle={user.points}>
+                            <ImageCoin src={coin} />
                         </Button>
                     </HeaderDiv>
                 </HeaderLogo>
                 <HeaderImage>
-                    <HeaderTitle> {isHistory ? `History` : `Electronics`}</HeaderTitle>
+                    <HeaderTitle> {isHistory ? ConstHeader.history : ConstHeader.store}</HeaderTitle>
                 </HeaderImage>
             </HeaderWrapper>
         </section >
-
     )
 }

@@ -1,6 +1,6 @@
-import url, { headers } from "./api"
+import url, { headers,get } from "./api"
 
-const method = "GET";
+const method = get;
 const getUser = () => {
     return new Promise((resolve,reject)=> {
         fetch(url.getUser,{

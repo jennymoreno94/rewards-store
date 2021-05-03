@@ -39,6 +39,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import getData from '../../utils/getMethods';
 import {ConstCard,MediaQuery} from '../../utils/constants'
+
 export function Card() {
   const { user, pagination, setUser } = useContext(AppContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
