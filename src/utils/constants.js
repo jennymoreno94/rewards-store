@@ -18,3 +18,11 @@ export const MediaQuery = {
     tablet: "(min-width: 768px)"
 }
 
+export const ConstFilter = {
+    allProducts: "All Products",
+    lowest: "Lowest price",
+    highest: "Highest price",
+    sort: "Sort by:",
+    allCategories: "todos",
+    order : "order"
+}

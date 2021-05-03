@@ -76,3 +76,18 @@ export const FilterSelect = styled.select`
     width: 25%;
     }
 `;
+
+export const propsButton  = (matches) => ({
+  height: matches ? "30%" : "auto",
+  width: matches ? "15%" : "100%",
+  backgroundColor: "#ededed",
+  padding: "0 2.5rem",
+  borderRadius: "2rem",
+  margin: "0.3rem 1rem 0.3rem 0",
+  cursor: "pointer",
+  fontFamily: "'Source Sans Pro', sans-serif",
+  fontSize: "18px",
+  color: "#616161",
+  marginText: matches ? "1.2rem 0 1.2rem 1rem" : "1.5rem 0 1.5rem 4rem",
+  colorHovered: "#15dbff"
+});
