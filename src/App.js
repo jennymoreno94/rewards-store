@@ -9,30 +9,16 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  Redirect,
-  useLocation,
-  useParams
 } from "react-router-dom";
 
 function App() {
   return (
     <div>
       <AppProvider>
-        {/*<Header />
-        <Filter />
-        <Card />
-        <History />
-        <Footer />*/}
-
-
         <Router>
-
           <Header />
-
-
           <Switch>
-            <Route exact path="/" >
+            <Route exact path="/rewards-store" >
               <Filter />
               <Card />
             </Route>

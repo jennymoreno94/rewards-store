@@ -63,7 +63,7 @@ export function Header() {
 
     const handleHistory = () => {
         let link = !isHistory
-        history.push(link ? "/history" : "/");
+        history.push(link ? "/history" : "/rewards-store");
         setIsHistory(link)
     };
 
