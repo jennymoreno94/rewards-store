@@ -20,7 +20,6 @@ const postPoints = (coins) => {
 }
 
 const postRedeem = (product) => {
-    debugger;
     return new Promise((resolve,reject)=> {
         fetch(url.postRedeem,{
             method,

@@ -13,7 +13,7 @@ export const CardBody = styled.div`
     padding-bottom: 1px;
     margin: 0.5rem;
     position: relative;
-    background: ${props => props.background};  //linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: ${props => props.theme.background};
 `;
 
 export const CardOverlay = styled.div`
@@ -41,12 +41,12 @@ export const CardImageDiv = styled.div`
 
 export const CardImage = styled.img.attrs({
   alt: 'cardImage',
-  width:"100%",
-  height:"auto"
+  width: "100%",
+  height: "auto"
 })`
   display: block;
-  width: ${props => props.widthImage ? props.widthImage : "100%"};
-  height: ${props => props.heightImage ? props.widthImage : "auto"};
+  width: ${props => props.theme.widthImage ? props.theme.widthImage : "100%"};
+  height: ${props => props.theme.heightImage ? props.theme.heightImage : "auto"};
 `;
 
 export const CardLine = styled.hr`
@@ -62,8 +62,8 @@ export const CardDivIcon = styled.div`
 `;
 
 export const CardNeed = styled.div`
-  opacity:0.6;
-  background:#616161;
+  opacity: ${props => props.theme.opacity ? props.theme.opacity : 0.6};
+  background: ${props => props.theme.background ? props.theme.background : "#616161"};
   border-radius: 100px;
   height:42px;
   font-family:'Source Sans Pro', sans-serif;
@@ -73,29 +73,29 @@ export const CardNeed = styled.div`
   padding-right:0.5rem;
   line-height: 2.314rem; 
   text-align:center;
-  color:#ffffff;
+  color:${props => props.theme.background ? props.theme.background : "#ffffff"};
 `;
 
 export const CardImageCoin = styled.img.attrs({
   alt: 'coin',
 })`
-  width: 25px;
-  height: 25px;
+  width: ${props => props.theme.width ? props.theme.width : "25px"};
+  height: ${props => props.theme.height ? props.theme.height : "25px"};
   vertical-align:middle;
 `;
 
 export const CardTittleH3 = styled.h3`
   font-family: Quicksand, arial, sans-serif;
   margin-left: 16px;
-  text-align: ${props => props.textAlign};//center;
-  color: ${props => props.color}; //#f0faff
+  text-align: ${props => props.theme.textAlign};
+  color: ${props => props.theme.color};
 `;
 
 export const CardTittleH4 = styled.h4`
   font-family: Quicksand, arial, sans-serif;
   margin-left: 18px;
-  text-align:${props => props.textAlign};
-  color:${props => props.color};
+  text-align:${props => props.theme.textAlign};
+  color:${props => props.theme.color};
 `;
 
 export const CardBuy = styled.div`
@@ -137,3 +137,78 @@ export const ConfirmationMessage = styled.h3`
   font-family: Quicksand, arial, sans-serif;
   margin-left: 16px;
 `;
+
+export const propsGeneralModal = (matches) => ({
+  height: "auto",
+  backgroundColor: "rgba(0,0,0, .35)",
+  width: matches ? "400px" : "300px",
+})
+
+export const propsModalButton = (matches) => ({
+  marginText: "1rem",
+  backgroundColor: "#e9e8e8",
+  paddingText: matches ? "0 1rem" : "0 0 0 0.5rem"
+})
+
+export const propsGeneralButton = (matches) => ({
+  height: "auto",
+  width: "80%",
+  backgroundColor: "#fbfbfb",
+  borderRadius: "2rem",
+  margin: "0rem 2rem 0rem",
+  cursor: "pointer",
+  fontFamily: "'Source Sans Pro', sans-serif",
+  fontSize: "18px",
+  color: "#616161",
+  colorHovered: "#15dbff",
+  marginText: matches ? "1.2rem 0 1.2rem 1rem" : "1.5rem 0 1.5rem 4rem",
+  paddingText: matches ? "0 0 0 3rem" : "0 0 0 0.5rem",
+});
+
+export const propsButtonReedem = {
+  colorHovered: "#fbfbfb",
+}
+
+export const propsConfirmationButton = (matches, isError) => ({
+  margin: "0rem 2rem 3rem",
+  paddingText: matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem",
+  color: isError ? "#bf0000" : "#009a00",
+  colorHovered: "#fbfbfb"
+})
+
+export const propsTittleConfirmation = {
+  textAlign: "center",
+  color: "#f0faff"
+}
+
+
+export const propsShoppingBag = (blue) => ({
+  backgroundColor: blue ? "#0AD4FA" : "#FFFFFF",
+  color:  blue ? "#FFFFFF" :"#0AD4FA",
+  fontSize: "25px",
+  borderRadius: "50%",
+  padding: "0.5rem",
+  margin: "1rem"
+})
+
+
+export const propsCardNeed = {
+  opacity: "1", 
+  background: "#fbfbfb", 
+  color: "#616161"
+}
+
+
+export const propsCardImage = {
+  widthImage: "60%", 
+  heightImage: "auto", 
+}
+
+export const propsCardImageCoin = {
+  width: "50px", 
+  height: "50px"
+}
+
+export const propsCardBoddy = (isError) => ({
+  background: isError ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)"
+})

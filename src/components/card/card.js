@@ -17,6 +17,17 @@ import {
   CardConfirmation,
   CardTextConfirmation,
   CardButtonConfirmation,
+  propsGeneralButton,
+  propsGeneralModal,
+  propsModalButton,
+  propsButtonReedem,
+  propsConfirmationButton,
+  propsTittleConfirmation,
+  propsShoppingBag,
+  propsCardNeed,
+  propsCardImage,
+  propsCardImageCoin,
+  propsCardBoddy
 } from '../card/cardStyled'
 import coin from '../../assets/coin.svg'
 import { Button } from '../transversal/buttonComponent/button'
@@ -27,7 +38,7 @@ import postData from '../../utils/postMethods';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import getData from '../../utils/getMethods';
-
+import {ConstCard,MediaQuery} from '../../utils/constants'
 export function Card() {
   const { user, pagination, setUser } = useContext(AppContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -41,7 +52,7 @@ export function Card() {
   });
 
   useEffect(() => {
-    window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
+    window.matchMedia(MediaQuery.tablet).addEventListener("change", (e) => {
       let matches = e.matches;
       setQueryMatch({ ...queryMatch, matches })
     })
@@ -82,26 +93,8 @@ export function Card() {
     setIsReedem(false)
   };
 
-  const propsButton = {
-    height: "auto",
-    width: "80%",
-    backgroundColor: "#fbfbfb",
-    borderRadius: "2rem",
-    margin: "0rem 2rem 0rem",
-    cursor: "pointer",
-    fontFamily: "'Source Sans Pro', sans-serif",
-    fontSize: "18px",
-    color: "#616161",
-    marginText: queryMatch.matches ? "1.2rem 0 1.2rem 1rem" : "1.5rem 0 1.5rem 4rem",
-    paddingText: queryMatch.matches ? "0 0 0 3rem" : "0 0 0 0.5rem",
-    colorHovered: "#15dbff"
-  }
-
-  const propsModal = {
-    width: queryMatch.matches ? "400px" : "300px",
-    height: "auto",
-    backgroundColor: "rgba(0,0,0, .35)"
-  }
+  const propsButton = propsGeneralButton(queryMatch.matches);
+  const propsModal = propsGeneralModal(queryMatch.matches);
 
   return (
     <>
@@ -113,30 +106,23 @@ export function Card() {
                   <CardBody
                     onMouseOver={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
-                    background={key === item._id && isReedem ? isError ? "linear-gradient(to left, #ed213a, #93291e);" : "linear-gradient(to right, #78ffd6, #a8ff78)" : null}>
+                    theme={key === item._id && isReedem ? propsCardBoddy(isError) : null}>
                     {key === item._id && isReedem ?
                       <div>
                         <CardImageDiv>
-                          <CardImage widthImage={"60%"} heightImage={"auto"} src={isError ? sad : smile} />
+                          <CardImage theme={propsCardImage} src={isError ? sad : smile} />
                         </CardImageDiv>
-                        <CardTittleH3 textAlign="center" color="#f0faff">{isError ? "Error!" : "Success!"}</CardTittleH3>
-                        <CardTittleH4 textAlign="center" color="#f0faff">{message}</CardTittleH4>
-                        <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton, margin: "0rem 2rem 3rem", paddingText: queryMatch.matches ? "0 4rem 0 4rem" : "0 0 0 0.5rem", color: isError ? "#bf0000" : "#009a00", colorHovered: "#fbfbfb" }} tittle={isError ? "TRY AGAIN" : "CONTINUE"}></Button>
+                        <CardTittleH3 theme={propsTittleConfirmation}>{isError ? ConstCard.error : ConstCard.success}</CardTittleH3>
+                        <CardTittleH4 theme={propsTittleConfirmation}>{message}</CardTittleH4>
+                        <Button onClick={handleConfirmationMessage} propsButton={{ ...propsButton,...propsConfirmationButton(queryMatch.matches,isError)}} tittle={isError ? ConstCard.try : ConstCard.continue}></Button>
                       </div>
                       :
                       <div>
                         <CardDivIcon>
 
                           {(user.points > item.cost) ?
-                            <FontAwesomeIcon icon={faShoppingBag} style={{
-                              backgroundColor: "#0AD4FA",
-                              color: "#FFFFFF",
-                              fontSize: "25px",
-                              borderRadius: "50%",
-                              padding: "0.5rem",
-                              margin: "1rem"
-                            }} /> :
-                            <CardNeed>You need {item.cost - user.points} <CardImageCoin src={coin} /> </CardNeed>
+                            <FontAwesomeIcon icon={faShoppingBag} style={propsShoppingBag(true)} /> :
+                            <CardNeed>{ConstCard.coinNeed} {item.cost - user.points} <CardImageCoin src={coin} /> </CardNeed>
                           }
                         </CardDivIcon>
                         <CardImageDiv>
@@ -148,15 +134,15 @@ export function Card() {
                         <Modal
                           isOpenModal={isOpenModal}
                           setIsOpenModal={setIsOpenModal}
-                          tittle={"Reedem"}
+                          tittle={ConstCard.tittleModal}
                           propsModal={propsModal}
                         >
 
                           <CardConfirmation>
-                            <CardTextConfirmation>Are you sure?</CardTextConfirmation>
+                            <CardTextConfirmation>{ConstCard.modalText}</CardTextConfirmation>
                             <CardButtonConfirmation>
-                              <Button onClick={() => { handleReedme(key) }} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"Yes"} />
-                              <Button onClick={() => { handleChange(false, key) }} propsButton={{ ...propsButton, marginText: "1rem", paddingText: queryMatch.matches ? "0 1rem" : "0 0 0 0.5rem", backgroundColor: "#e9e8e8" }} tittle={"No"} />
+                              <Button onClick={() => { handleReedme(key) }} propsButton={{ ...propsButton,...propsModalButton(queryMatch.matches)}} tittle={ConstCard.affirmation} />
+                              <Button onClick={() => { handleChange(false, key) }} propsButton={{ ...propsButton,...propsModalButton(queryMatch.matches)}} tittle={ConstCard.negation} />
                             </CardButtonConfirmation>
                           </CardConfirmation>
                         </Modal>
@@ -166,20 +152,13 @@ export function Card() {
 
                             <CardDivIcon>
                               {(user.points > item.cost) ?
-                                <FontAwesomeIcon icon={faShoppingBag} style={{
-                                  backgroundColor: "#FFFFFF",
-                                  color: "#0AD4FA",
-                                  fontSize: "25px",
-                                  borderRadius: "50%",
-                                  padding: "0.5rem",
-                                  margin: "1rem"
-                                }} /> :
-                                <CardNeed style={{ opacity: "1", background: "#fbfbfb", color: "#616161" }}>You need {item.cost - user.points} <CardImageCoin src={coin}  /> </CardNeed>
+                                <FontAwesomeIcon icon={faShoppingBag} style={propsShoppingBag(false)} /> :
+                                <CardNeed theme={propsCardNeed}>{ConstCard.coinNeed} {item.cost - user.points} <CardImageCoin src={coin}/> </CardNeed>
                               }
                             </CardDivIcon>
                             <CardBuy>
-                              <CardTextBuy>{item.cost}<CardImageCoin style={{ width: "36px", height: "36px" }} src={coin} /></CardTextBuy>
-                              {isHovered && (user.points > item.cost) ? <Button onClick={() => { handleChange(true, item._id) }} propsButton={{ ...propsButton, colorHovered: "#fbfbfb" }} tittle={"Reedem now"}></Button> : null}
+                              <CardTextBuy>{item.cost}<CardImageCoin theme={propsCardImageCoin} src={coin} /></CardTextBuy>
+                              {isHovered && (user.points > item.cost) ? <Button onClick={() => { handleChange(true, item._id) }} propsButton={{ ...propsButton,...propsButtonReedem}} tittle={ConstCard.tittleReedme}></Button> : null}
                             </CardBuy>
                           </CardOverlay> : null}
                       </div>
