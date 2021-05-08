@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 1vw;
+  display: flex;
+  flex-flow: row wrap;
   margin-top: 2rem;
+  gap: 1vw;
 `;
 
 export const CardBody = styled.div`
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05), 0 0px 10px rgba(0, 0, 0, 0.08);
+    width:100%;
     border-radius: 10px;
     padding-bottom: 1px;
     margin: 0.5rem;
-    position: relative;
+    min-width: 300px;
     background: ${props => props.theme.background};
 `;
 
