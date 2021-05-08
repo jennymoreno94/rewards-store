@@ -14,6 +14,7 @@ export const CardBody = styled.div`
     padding-bottom: 1px;
     margin: 0.5rem;
     min-width: 300px;
+    position: relative;
     background: ${props => props.theme.background};
 `;
 
