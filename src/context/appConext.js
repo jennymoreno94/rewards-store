@@ -36,26 +36,10 @@ export function AppProvider({ children }) {
     useEffect(() => {
         return getData.getHistory()
             .then(response => {
-                var agruparProductos = response.reduce(function (accumulator, currentValue, index) {
-                    let resultado = accumulator.findIndex((element) => element !== undefined ? element.productId === currentValue.productId : null);
-                    if (resultado !== -1) {
-                        index = resultado;
-                    } else {
-                        if (index >= 1) {
-                            index = accumulator.length;
-                        }
-                    }
-
-                    accumulator[index] = (accumulator[index] || { ...currentValue, cost: 0 })
-                    accumulator[index].cost += currentValue.cost
-
-                    return accumulator;
-                }, []);
-
-                setHistory(agruparProductos);
+                setHistory(response);
             });
     }, [isHistory])
-
+    
     return (
         <AppContext.Provider
             value={{

@@ -30,7 +30,7 @@ import {ConstHeader,MediaQuery} from '../../utils/constants'
 
 export function Header() {
     let history = useHistory();
-    const { user, setIsHistory, isHistory, setUser } = useContext(AppContext);
+    const { user, setIsHistory, isHistory, setUser,pagination } = useContext(AppContext);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [queryMatch, setQueryMatch] = useState({
         matches: window.innerWidth > 768 ? true : false,
@@ -53,6 +53,7 @@ export function Header() {
         let link = !isHistory
         history.push(link ? ConstHeader.linkHistory : ConstHeader.linkStore);
         setIsHistory(link)
+        pagination.setCurrentPage(1)
     };
 
     const handleAddCoins = (coins) => {
